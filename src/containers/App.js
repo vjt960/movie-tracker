@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { loadMovies } from '../actions';
-import { connect } from 'tls';
+import { fetchData } from '../utilz/apiCalls';
+import { connect } from 'react-redux';
 // import '../App.css';
 
 class App extends Component {
 componentDidMount = async () => {
   const { handleFetch } = this.props;
+  fetchData()
+  .then(data => handleFetch(data.results))
 }
 
   render() {
