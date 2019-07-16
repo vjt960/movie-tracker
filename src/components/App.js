@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { loadMovies } from '../actions';
+import { connect } from 'tls';
 // import '../App.css';
 
 class App extends Component {
@@ -18,4 +19,4 @@ export const mapDispatchToProps = dispatch => ({
   handleFetch: movies => dispatch(loadMovies(movies))
 })
 
-export default App;
+export default connect(null, mapDispatchToProps)(App);
