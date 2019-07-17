@@ -1,18 +1,29 @@
 header {
   height: 100px;
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 10% 80% 10%;
   // border-bottom: 2px solid #f1f1f1;
 }
 
 h1 {
   color: #f1f1f1;
-  width: 60%;
+  width: fit-content;
   font-size: 50px;
-  text-align: center;
+  margin: auto;
   padding: 10px;
+  grid-column-start: 2;
+  grid-column-end: 3;
 }
 
-.sign-in-btn {
+.header-btns-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.sign-in-btn,
+.home-btn {
   text-align: center;
+  margin: 15px auto;
+  grid-column-start: 3;
+  grid-column-end: 4;
 }
