@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 import { fetchUser } from '../utilz/apiCalls';
-
+import { signIn } from '../actions';
 
 class LoginForm extends Component {
   constructor() {
@@ -18,10 +18,12 @@ class LoginForm extends Component {
     this.setState({ [e.target.name] : e.target.value })
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
     const { email, password } = this.state
-    fetchUser(email, password)
+    let user = await fetchUser(email, password)
+    this.props.setUser(user);
+    console.log(user)
   }
 
   render() {
@@ -62,8 +64,12 @@ class LoginForm extends Component {
   }
 }
 
-// const mapDispatchToProps = (dispatch) => ({
-//   handleSubmit: (email, password) => dispatch()
-// })
+const mapStateToProps = (state) => ({
+  user: state.user
+})
 
-export default LoginForm;
+const mapDispatchToProps = (dispatch) => ({
+  setUser: (user) => dispatch(signIn(user))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

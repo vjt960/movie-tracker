@@ -12,13 +12,11 @@ export const fetchUser = async (email, password) => {
     body: JSON.stringify({ email:  email, password:  password })
   }
   const url = 'http://localhost:3000/api/users'
-  fetch(url, options)
-  .then(res => res.json())
-  .then(data => console.log(data.data))
-  // const response = await fetch(url, options);
-  // const userData = await response.json();
-  // console.log(userData);
-  // return userData
+  const getUserData = await fetch(url, options);
+  const response = await getUserData.json();
+  const userData = await response.data
+  console.log(userData);
+  return userData
 };
 
 
