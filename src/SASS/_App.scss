@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+.app {
+  background-color: black;
+}
+
+h1 {
+  color: #f1f1f1;
+  font-size: 60px;
+  text-align: center;
+}
+
+.loading-container {
+  display: flex;
+  height: 95%;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  width: 95%;
+  height: 95%;
+}
+
+.loading-gif {
+  margin: auto;
+}
