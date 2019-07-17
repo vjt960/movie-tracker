@@ -4,9 +4,11 @@
   padding: 0px;
 }
 
-.app {
+HTML,
+body,
+main {
   background-color: black;
-  height: 100vh;
+  height: 100%;
 }
 
 .loading-container {

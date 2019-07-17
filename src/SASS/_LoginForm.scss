@@ -5,9 +5,9 @@
   box-shadow: 0px 0px 15px #fff;
   display: flex;
   flex-direction: column;
-  height: 40%;
+  height: 300px;
   justify-content: center;
-  margin: auto;
+  margin: 50px auto;
   width: 40%;
 
 }
@@ -16,8 +16,15 @@
   height: 30px;
   margin: 10px;
   width: 90%;
+  border: 1px solid black;
+  padding: 5px;
 }
 
 .login-btn {
-  width: 50%;
+  width: 40%;
+}
+
+.login-create-acct {
+  margin-top: 20px;
+  text-decoration: none;
 }

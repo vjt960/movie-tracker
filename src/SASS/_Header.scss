@@ -23,7 +23,12 @@ h1 {
 .sign-in-btn,
 .home-btn {
   text-align: center;
-  margin: 15px auto;
+  margin: 7px auto;
+  padding: 7px;
   grid-column-start: 3;
   grid-column-end: 4;
+  border: 1px solid white;
+  color: white;
+  width: 75px;
+  text-decoration: none;
 }

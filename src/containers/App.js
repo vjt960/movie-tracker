@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { loadMovies } from '../actions';
-import { fetchData } from '../utilz/apiCalls';
+import { fetchMovieData } from '../utilz/apiCalls';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 import LoginForm from './LoginForm';
@@ -15,7 +15,7 @@ constructor(props) {
 
 componentDidMount = async () => {
   const { handleFetch } = this.props;
-  fetchData()
+  fetchMovieData()
   .then(data => data)
   .then(movies => handleFetch(movies))
 }
