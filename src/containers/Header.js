@@ -1,7 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { signOut } from '../actions'
 
-const Header = () => {
+const Header = (props) => {
+  const signInOut = props.user.loggedIn ? 'Sign-out' : 'Sign-in';
   return (
     <header>
       <h1>MOVIE-TRACKER</h1>
@@ -10,8 +13,9 @@ const Header = () => {
             to='/login'
             className='sign-in-btn'
             activeClassName='active'
+            onClick={props.user.loggedIn ? props.signOutUser : null}
         >
-          Sign-In
+          {signInOut}
         </NavLink>
         <NavLink
             to='/'
@@ -25,4 +29,12 @@ const Header = () => {
   )
 }
 
-export default Header;
+const mapStateToProps = (state) => ({
+  user: state.user
+})
+
+const mapDispatchToProps = dispatch => ({
+  signOutUser: () => dispatch(signOut())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 import LoginForm from './LoginForm';
 import MoviesDisplay from './MoviesDisplay';
-import Header from '../components/Header';
+import Header from './Header';
 
 
 class App extends Component {

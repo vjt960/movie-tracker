@@ -8,8 +8,8 @@ export const signIn = (user) => ({
     user
 }); 
 
-export const logOut = () => ({
-
+export const signOut = () => ({
+    type: 'SIGN_OUT'
 });
 
 export const createAcct = (name, email, password) => ({

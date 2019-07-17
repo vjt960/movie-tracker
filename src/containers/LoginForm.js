@@ -19,18 +19,22 @@ class LoginForm extends Component {
   }
 
   handleSubmit = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     const { email, password } = this.state
     let user = await fetchUser(email, password)
     this.props.setUser(user);
-    console.log(user)
+    this.clearInputs()
+  }
+
+  clearInputs = () => {
+    this.setState({email: '', password: ''})
   }
 
   render() {
     return (
       <form className='login-form'>
         <input 
-          type='text' 
+          type='email' 
           name='email' 
           className='login-input' 
           placeholder='E-Mail...'
@@ -38,19 +42,20 @@ class LoginForm extends Component {
           value={this.state.email}
         />
         <input 
-          type='text' 
+          type='password' 
           name='password' 
           className='login-input' 
           placeholder='Password...' 
           onChange={this.handleChange}
           value={this.state.password}
         />
-        <button 
+        <NavLink
+          to='/'
           className='login-input login-btn'
           onClick={(e) => this.handleSubmit(e)}
         >
-          Sign-In
-        </button>
+            Sign-In
+        </NavLink>
         <NavLink
           to='/signup'
           className='login-create-acct-btn'
