@@ -6,22 +6,17 @@
 
 .app {
   background-color: black;
-}
-
-h1 {
-  color: #f1f1f1;
-  font-size: 60px;
-  text-align: center;
+  height: 100vh;
 }
 
 .loading-container {
+  align-items: center;
   display: flex;
   height: 95%;
+  height: 95%;
   justify-content: center;
-  align-items: center;
   margin: auto;
   width: 95%;
-  height: 95%;
 }
 
 .loading-gif {

@@ -1,0 +1,23 @@
+.login-form {
+  align-items: center;
+  background-color: grey;
+  border-radius: 10%;
+  box-shadow: 0px 0px 15px #fff;
+  display: flex;
+  flex-direction: column;
+  height: 40%;
+  justify-content: center;
+  margin: auto;
+  width: 40%;
+
+}
+
+.login-input {
+  height: 30px;
+  margin: 10px;
+  width: 90%;
+}
+
+.login-btn {
+  width: 50%;
+}
