@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { postNewUser } from '../utilz/apiCalls'
+import { postNewUser } from '../utilz/apiCalls';
+import { NavLink } from 'react-router-dom';
+import { createAcct } from '../actions';
 
 
 class SignUpForm extends React.Component {
@@ -30,39 +32,42 @@ class SignUpForm extends React.Component {
     }
 
     render() {
-        <form className='login-form'>
-        <input 
-            type='text'
-            name='name'
-            className='login-input'
-            placeholder='Name...'
+        return (
+         <form className='login-form'>
+            <input 
+                type='text'
+                name='name'
+                className='login-input'
+                placeholder='Name...'
+                onChange={this.handleChange}
+                value={this.state.name}
+                />
+            <input 
+            type='email' 
+            name='email' 
+            className='login-input' 
+            placeholder='E-Mail...'
             onChange={this.handleChange}
-            value={this.state.name}
+            value={this.state.email}
             />
-        <input 
-          type='email' 
-          name='email' 
-          className='login-input' 
-          placeholder='E-Mail...'
-          onChange={this.handleChange}
-          value={this.state.email}
-        />
-        <input 
-          type='password' 
-          name='password' 
-          className='login-input' 
-          placeholder='Password...' 
-          onChange={this.handleChange}
-          value={this.state.password}
-        />
-        <NavLink
-          to='/'
-          className='login-input login-btn'
-          onClick={(e) => this.handleSubmit(e)}
-        >
-            Create Your Account
-        </NavLink>
-      </form>
+            <input 
+            type='password' 
+            name='password' 
+            className='login-input' 
+            placeholder='Password...' 
+            onChange={this.handleChange}
+            value={this.state.password}
+            />
+            <NavLink
+            to='/'
+            className='login-input login-btn'
+            onClick={(e) => this.handleSubmit(e)}
+            >
+                Create Your Account
+            </NavLink>
+        </form>
+        )
+        
     }
 }
 
