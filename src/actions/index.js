@@ -16,18 +16,19 @@ export const signOut = () => ({
   type: 'SIGN_OUT'
 });
 
-export const createAcct = (name, email, password) => ({
+export const createAcct = (user) => ({
   type: 'CREATE_ACCT',
-  name,
-  email,
-  password
+  user
 });
-
 
 export const addFavorite = () => ({
   type: 'ADD_FAVORITE'
 });
 
-export const viewFavorites = () => ({});
+export const viewFavorites = () => ({
+    type: 'VIEW_FAVORITES'
+});
 
-export const deleteFavorite = () => ({});
+export const deleteFavorite = () => ({
+    type: 'DELETE_FAVORITES'
+});
