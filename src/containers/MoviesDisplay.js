@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import MoviePoster from '../components/MoviePoster';
+import MoviesDetailDisplay from '../components/movieDetailsDisplay';
 
 const MoviesDisplay = ({ movies }) => {
   const allMovies = movies.map(movie => {
@@ -13,7 +14,16 @@ const MoviesDisplay = ({ movies }) => {
       />
     );
   });
-  return <section className="movies-display">{allMovies}</section>;
+  return (
+  <section className="movie-display">
+    <section className='movie-details'>
+      <MoviesDetailDisplay />
+    </section>
+    <section className='movies-scroll'>
+      {allMovies}
+    </section>
+  </section>
+  );
 };
 
 const mapStateToProps = state => {

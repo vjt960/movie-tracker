@@ -23,9 +23,9 @@ class App extends Component {
     return (
       <main className="app">
         <Header />
-        <Route exact path="/" render={() => !isLoading && <MoviesDisplay />} />
         <Route exact path="/login" render={() => <LoginForm />} />
         <Route exact path="/signup" render={() => <SignUpForm />} />
+        <Route exact path="/" render={() => !isLoading && <MoviesDisplay />} />
       </main>
     );
   }
