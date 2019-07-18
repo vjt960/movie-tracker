@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { postNewUser } from '../utilz/apiCalls';
 import { NavLink } from 'react-router-dom';
 import { createAcct } from '../actions';
 
-class SignUpForm extends React.Component {
+class SignUpForm extends Component {
   constructor() {
     super();
     this.state = {

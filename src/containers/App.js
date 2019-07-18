@@ -10,10 +10,6 @@ import SignUpForm from './SignUpForm';
 import Header from './Header';
 
 class App extends Component {
-  constructor() {
-    super();
-  }
-
   componentDidMount = () => {
     const { handleFetch, endLoading } = this.props;
     fetchMovieData()
