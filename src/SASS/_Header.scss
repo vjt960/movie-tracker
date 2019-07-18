@@ -1,0 +1,34 @@
+header {
+  height: 100px;
+  display: grid;
+  grid-template-columns: 10% 80% 10%;
+  // border-bottom: 2px solid #f1f1f1;
+}
+
+h1 {
+  color: #f1f1f1;
+  width: fit-content;
+  font-size: 50px;
+  margin: auto;
+  padding: 10px;
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+.header-btns-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.sign-in-btn,
+.home-btn {
+  text-align: center;
+  margin: 7px auto;
+  padding: 7px;
+  grid-column-start: 3;
+  grid-column-end: 4;
+  border: 1px solid white;
+  color: white;
+  width: 75px;
+  text-decoration: none;
+}

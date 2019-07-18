@@ -3,11 +3,14 @@ export const loadMovies = movies => ({
     movies
 });
 
-export const signIn = (email, password) => ({
-    type: "SIGN_IN",
-    email,
-    password
+export const signIn = (user) => ({
+    type: 'SIGN_IN',
+    user
 }); 
+
+export const signOut = () => ({
+    type: 'SIGN_OUT'
+});
 
 export const createAcct = (name, email, password) => ({
     type: 'CREATE_ACCT',
@@ -21,7 +24,6 @@ export const addFavorite = () => ({
 });
 
 export const viewFavorites = () => ({
-
 
 });
 

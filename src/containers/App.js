@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { loadMovies } from '../actions';
-import { fetchData } from '../utilz/apiCalls';
+import { fetchMovieData } from '../utilz/apiCalls';
 import { connect } from 'react-redux';
+import { Route } from 'react-router-dom';
+import LoginForm from './LoginForm';
 import MoviesDisplay from './MoviesDisplay';
-import Header from '../components/Header';
-// import '../App.css';
+import Header from './Header';
+
 
 class App extends Component {
 constructor(props) {
@@ -13,19 +15,21 @@ constructor(props) {
 
 componentDidMount = async () => {
   const { handleFetch } = this.props;
-  fetchData()
+  fetchMovieData()
   .then(data => data)
   .then(movies => handleFetch(movies))
 }
 
   render() {
+    const homeDisplay = (
+      (this.props.movies.length) && 
+      <MoviesDisplay />
+    )
     return (
       <main className='app'>
         <Header />
-        {
-          (this.props.movies.length) && 
-        <MoviesDisplay />
-        }
+      <Route exact path='/' render = {() => homeDisplay} />
+      <Route exact path='/login' render = {() => <LoginForm />} />
       </main>
     );
   }
