@@ -6,75 +6,75 @@ import { signIn } from '../actions';
 
 class LoginForm extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       email: '',
       password: ''
-    }
+    };
   }
 
-  handleChange = (e) => {
+  handleChange = e => {
     e.preventDefault();
-    this.setState({ [e.target.name] : e.target.value })
-  }
+    this.setState({ [e.target.name]: e.target.value });
+  };
 
-  handleSubmit = async (e) => {
+  handleSubmit = async e => {
     // e.preventDefault();
-    const { email, password } = this.state
-    let user = await fetchUser(email, password)
+    const { email, password } = this.state;
+    let user = await fetchUser(email, password);
     this.props.setUser(user);
-    this.clearInputs()
-  }
+    this.clearInputs();
+  };
 
   clearInputs = () => {
-    this.setState({email: '', password: ''})
-  }
+    this.setState({ email: '', password: '' });
+  };
 
   render() {
     return (
-      <form className='login-form'>
-        <input 
-          type='email' 
-          name='email' 
-          className='login-input' 
-          placeholder='E-Mail...'
+      <form className="login-form">
+        <input
+          type="email"
+          name="email"
+          className="login-input"
+          placeholder="E-Mail..."
           onChange={this.handleChange}
           value={this.state.email}
         />
-        <input 
-          type='password' 
-          name='password' 
-          className='login-input' 
-          placeholder='Password...' 
+        <input
+          type="password"
+          name="password"
+          className="login-input"
+          placeholder="Password..."
           onChange={this.handleChange}
           value={this.state.password}
         />
         <NavLink
-          to='/'
-          className='login-input login-btn'
-          onClick={(e) => this.handleSubmit(e)}
+          to="/"
+          className="login-input login-btn"
+          onClick={e => this.handleSubmit(e)}
         >
-            Sign-In
+          Sign-In
         </NavLink>
-        <NavLink
-          to='/signup'
-          className='login-create-acct-btn'
-        >
-          <p className='login-create-acct'>
-            Don't have an account?  Create one now!
+        <NavLink to="/signup" className="login-create-acct-btn">
+          <p className="login-create-acct">
+            Don't have an account? Create one now!
           </p>
         </NavLink>
       </form>
-    )
+    );
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   user: state.user
-})
+});
 
-const mapDispatchToProps = (dispatch) => ({
-  setUser: (user) => dispatch(signIn(user))
-})
+const mapDispatchToProps = dispatch => ({
+  setUser: user => dispatch(signIn(user))
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LoginForm);

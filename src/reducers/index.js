@@ -1,12 +1,14 @@
 import { combineReducers } from 'redux';
-import { moviesReducer } from './moviesReducer';
-import { favoritesReducer } from './favoritesReducer';
 import { userReducer } from './userReducer';
+import { favoritesReducer } from './favoritesReducer';
+import { moviesReducer } from './moviesReducer';
+import { loadingReducer } from './loadingReducer';
 
 const rootReducer = combineReducers({
-  movies: moviesReducer,
+  user: userReducer,
   favorites: favoritesReducer,
-  user: userReducer
-})
+  movies: moviesReducer,
+  isLoading: loadingReducer
+});
 
 export default rootReducer;
