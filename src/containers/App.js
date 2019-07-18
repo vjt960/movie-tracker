@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 import LoginForm from './LoginForm';
 import MoviesDisplay from './MoviesDisplay';
+import SignUpForm from './SignUpForm';
 import Header from './Header';
 
 
@@ -28,8 +29,9 @@ componentDidMount = async () => {
     return (
       <main className='app'>
         <Header />
-      <Route exact path='/' render = {() => homeDisplay} />
-      <Route exact path='/login' render = {() => <LoginForm />} />
+        <Route exact path='/' render = {() => homeDisplay} />
+        <Route exact path='/login' render = {() => <LoginForm />} />
+        <Route exact path='/signup' render = {() => <SignUpForm />} />
       </main>
     );
   }

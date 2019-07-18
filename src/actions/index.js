@@ -20,6 +20,7 @@ export const createAcct = (name, email, password) => ({
 });
 
 export const addFavorite = () => ({
+    type: 'ADD_FAVORITE'
 
 });
 
