@@ -33,7 +33,7 @@ class SignUpForm extends React.Component {
 
     render() {
         return (
-         <form className='login-form'>
+        <form className='login-form'>
             <input 
                 type='text'
                 name='name'
@@ -43,26 +43,26 @@ class SignUpForm extends React.Component {
                 value={this.state.name}
                 />
             <input 
-            type='email' 
-            name='email' 
-            className='login-input' 
-            placeholder='E-Mail...'
-            onChange={this.handleChange}
-            value={this.state.email}
-            />
+                type='email' 
+                name='email' 
+                className='login-input' 
+                placeholder='E-Mail...'
+                onChange={this.handleChange}
+                value={this.state.email}
+                />
             <input 
-            type='password' 
-            name='password' 
-            className='login-input' 
-            placeholder='Password...' 
-            onChange={this.handleChange}
-            value={this.state.password}
-            />
+                type='password' 
+                name='password' 
+                className='login-input' 
+                placeholder='Password...' 
+                onChange={this.handleChange}
+                value={this.state.password}
+                />
             <NavLink
-            to='/'
-            className='login-input login-btn'
-            onClick={(e) => this.handleSubmit(e)}
-            >
+                to='/'
+                className='login-input login-btn'
+                onClick={(e) => this.handleSubmit(e)}
+                >
                 Create Your Account
             </NavLink>
         </form>
