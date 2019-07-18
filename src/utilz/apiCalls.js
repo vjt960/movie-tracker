@@ -15,9 +15,21 @@ export const fetchUser = async (email, password) => {
   const getUserData = await fetch(url, options);
   const response = await getUserData.json();
   const userData = await response.data
-  console.log(userData);
+  // console.log(userData);
   return userData
 };
 
-
+export const postNewUser = async (name, email, password) => {
+  const options = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({name: name, email: email, password: password})
+  }
+  const url = 'http://localhost:3000/api/users'
+  const getUserData = await fetch(url, options);
+  const response = await getUserData.json();
+  const userData = await response.data;
+  console.log(userData)
+  return userData
+}
 

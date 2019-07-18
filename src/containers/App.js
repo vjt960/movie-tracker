@@ -30,6 +30,7 @@ componentDidMount = async () => {
         <Header />
       <Route exact path='/' render = {() => homeDisplay} />
       <Route exact path='/login' render = {() => <LoginForm />} />
+      <Route exact path='/signup' />
       </main>
     );
   }
