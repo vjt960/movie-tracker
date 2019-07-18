@@ -1,12 +1,15 @@
 export const userReducer = (state = {}, { type, user }) => {
-  switch(type) {
+  switch (type) {
     case 'SIGN_IN':
-      return {...user, loggedIn: true};
+      return { ...user, loggedIn: true };
 
     case 'SIGN_OUT':
-      return state = {};
+      return (state = {});
 
-    default: 
+    case 'CREATE_ACCT':
+      return { ...user, id: Date.now() };
+
+    default:
       return state;
   }
-}
+};

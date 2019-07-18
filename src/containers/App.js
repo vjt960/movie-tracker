@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 import LoginForm from './LoginForm';
 import MoviesDisplay from './MoviesDisplay';
+import SignUpForm from './SignUpForm';
 import Header from './Header';
 
 class App extends Component {
@@ -28,6 +29,7 @@ class App extends Component {
         <Header />
         <Route exact path="/" render={() => !isLoading && <MoviesDisplay />} />
         <Route exact path="/login" render={() => <LoginForm />} />
+        <Route exact path="/signup" render={() => <SignUpForm />} />
       </main>
     );
   }

@@ -23,7 +23,9 @@ export const createAcct = (name, email, password) => ({
   password
 });
 
-export const addFavorite = () => ({});
+export const addFavorite = () => ({
+  type: 'ADD_FAVORITE'
+});
 
 export const viewFavorites = () => ({});
 
