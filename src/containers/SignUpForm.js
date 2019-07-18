@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { postNewUser } from '../utilz/apiCalls';
 import { NavLink } from 'react-router-dom';
-import { createAcct } from '../actions';
+// import { createAcct } from '../actions';
+import { signIn } from '../actions';
+import { fetchUser } from '../utilz/apiCalls';
 
 class SignUpForm extends Component {
   constructor() {
@@ -26,47 +28,58 @@ class SignUpForm extends Component {
     this.clearInputs();
   };
 
-  clearInputs = () => {
-    this.setState({ name: '', email: '', password: '' });
-  };
 
-  render() {
-    return (
-      <form className="login-form">
-        <input
-          type="text"
-          name="name"
-          className="login-input"
-          placeholder="Name..."
-          onChange={this.handleChange}
-          value={this.state.name}
-        />
-        <input
-          type="email"
-          name="email"
-          className="login-input"
-          placeholder="E-Mail..."
-          onChange={this.handleChange}
-          value={this.state.email}
-        />
-        <input
-          type="password"
-          name="password"
-          className="login-input"
-          placeholder="Password..."
-          onChange={this.handleChange}
-          value={this.state.password}
-        />
-        <NavLink
-          to="/"
-          className="login-input login-btn"
-          onClick={e => this.handleSubmit(e)}
-        >
-          Create Your Account
-        </NavLink>
-      </form>
-    );
-  }
+    handleSubmit = async (e) => {
+        // e.preventDefault();
+        const { name, email, password } = this.state;
+        await postNewUser(name, email, password)
+        let newUser = await fetchUser(email, password)
+        this.props.signIn(newUser);
+        this.clearInputs()
+    }
+
+    clearInputs = () => {
+        this.setState({name: '', email: '', password: ''})
+    }
+
+    render() {
+        return (
+        <form className='login-form'>
+            <input 
+                type='text'
+                name='name'
+                className='login-input'
+                placeholder='Name...'
+                onChange={this.handleChange}
+                value={this.state.name}
+                />
+            <input 
+                type='email' 
+                name='email' 
+                className='login-input' 
+                placeholder='E-Mail...'
+                onChange={this.handleChange}
+                value={this.state.email}
+                />
+            <input 
+                type='password' 
+                name='password' 
+                className='login-input' 
+                placeholder='Password...' 
+                onChange={this.handleChange}
+                value={this.state.password}
+                />
+            <NavLink
+                to='/'
+                className='login-input login-btn'
+                onClick={(e) => this.handleSubmit(e)}
+                >
+                Create Your Account
+            </NavLink>
+        </form>
+        )
+        
+    }
 }
 
 const mapStateToProps = state => ({
@@ -74,8 +87,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  createNewUser: user => dispatch(createAcct(user))
-});
+    signIn: (user) => dispatch(signIn(user))
+})
+
 
 export default connect(
   mapStateToProps,

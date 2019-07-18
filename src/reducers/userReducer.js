@@ -7,7 +7,8 @@ export const userReducer = (state = {}, { type, user }) => {
       return (state = {});
 
     case 'CREATE_ACCT':
-      return { ...user, id: Date.now() };
+      return {...user, id: Date.now()};
+
 
     default:
       return state;
