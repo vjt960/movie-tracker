@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { postNewUser } from '../utilz/apiCalls';
 import { NavLink } from 'react-router-dom';
@@ -6,20 +6,28 @@ import { NavLink } from 'react-router-dom';
 import { signIn } from '../actions';
 import { fetchUser } from '../utilz/apiCalls';
 
+class SignUpForm extends Component {
+  constructor() {
+    super();
+    this.state = {
+      name: '',
+      email: '',
+      password: ''
+    };
+  }
 
-class SignUpForm extends React.Component {
-    constructor() {
-        super();
-        this.state ={
-            name: '',
-            email: '',
-            password: ''
-        }
-    }
+  handleChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
 
-    handleChange = (e) => {
-        this.setState({ [e.target.name] : e.target.value })
-    }
+  handleSubmit = async e => {
+    // e.preventDefault();
+    const { name, email, password } = this.state;
+    const user = await postNewUser(name, email, password);
+    this.props.createNewUser(user);
+    this.clearInputs();
+  };
+
 
     handleSubmit = async (e) => {
         // e.preventDefault();
@@ -75,11 +83,15 @@ class SignUpForm extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    user: state.user
-})
+  user: state.user
+});
 
 const mapDispatchToProps = dispatch => ({
     signIn: (user) => dispatch(signIn(user))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignUpForm);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SignUpForm);
