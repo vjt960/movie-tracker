@@ -5,9 +5,11 @@ import { signOut } from '../actions'
 
 const Header = (props) => {
   const signInOut = props.user.loggedIn ? 'Sign-out' : 'Sign-in';
+  const greeting = props.user.loggedIn ? `Hello, ${props.user.name}!` : '';
   return (
     <header>
       <h1>MOVIE-TRACKER</h1>
+      <p className='header-greeting'>{greeting}</p>
       <div className='header-btns-container'>
         <NavLink
             to='/login'
