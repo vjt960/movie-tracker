@@ -44,11 +44,5 @@ export const postNewUser = async (name, email, password) => {
   catch(error) {
     throw Error('Error creating user')
   }
-}
 
-
-    return userData;
-  } catch (error) {
-    throw Error('Error creating user');
-  }
 };
