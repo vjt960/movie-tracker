@@ -4,22 +4,24 @@ describe('actions', () => {
     it('should have a type of LOAD_MOVIES', () => {
         const movies = [
             {
-                "vote_count": 27,
-                "id": 315946,
+                "vote_count": 1888,
+                "id": 429617,
                 "video": false,
-                "vote_average": 6.2,
-                "title": "Passage of Venus",
-                "popularity": 1.603,
-                "poster_path": "\/9jtgJphKW836gISyzdUKWnZ6yrB.jpg",
-                "original_language": "xx",
-                "original_title": "Passage de Venus",
+                "vote_average": 7.8,
+                "title": "Spider-Man: Far from Home",
+                "popularity": 417.77,
+                "poster_path": "\/rjbNpRMoVvqHmhmksbokcyCr7wn.jpg",
+                "original_language": "en",
+                "original_title": "Spider-Man: Far from Home",
                 "genre_ids": [
-                    99
+                    28,
+                    12,
+                    878
                 ],
-                "backdrop_path": null,
+                "backdrop_path": "\/dihW2yTsvQlust7mSuAqJDtqW7k.jpg",
                 "adult": false,
-                "overview": "Photo sequence of the rare transit of Venus over the face of the Sun, one of the first chronophotographic sequences.",
-                "release_date": "1874-12-09"
+                "overview": "Peter Parker and his friends go on a summer trip to Europe. However, they will hardly be able to rest - Peter will have to agree to help Nick Fury uncover the mystery of creatures that cause natural disasters and destruction throughout the continent.",
+                "release_date": "2019-06-28"
             }
         ]
 
@@ -27,22 +29,24 @@ describe('actions', () => {
             type: 'LOAD_MOVIES',
             movies: [
                 {
-                    "vote_count": 27,
-                    "id": 315946,
+                    "vote_count": 1888,
+                    "id": 429617,
                     "video": false,
-                    "vote_average": 6.2,
-                    "title": "Passage of Venus",
-                    "popularity": 1.603,
-                    "poster_path": "\/9jtgJphKW836gISyzdUKWnZ6yrB.jpg",
-                    "original_language": "xx",
-                    "original_title": "Passage de Venus",
+                    "vote_average": 7.8,
+                    "title": "Spider-Man: Far from Home",
+                    "popularity": 417.77,
+                    "poster_path": "\/rjbNpRMoVvqHmhmksbokcyCr7wn.jpg",
+                    "original_language": "en",
+                    "original_title": "Spider-Man: Far from Home",
                     "genre_ids": [
-                        99
+                        28,
+                        12,
+                        878
                     ],
-                    "backdrop_path": null,
+                    "backdrop_path": "\/dihW2yTsvQlust7mSuAqJDtqW7k.jpg",
                     "adult": false,
-                    "overview": "Photo sequence of the rare transit of Venus over the face of the Sun, one of the first chronophotographic sequences.",
-                    "release_date": "1874-12-09"
+                    "overview": "Peter Parker and his friends go on a summer trip to Europe. However, they will hardly be able to rest - Peter will have to agree to help Nick Fury uncover the mystery of creatures that cause natural disasters and destruction throughout the continent.",
+                    "release_date": "2019-06-28"
                 }
             ]
         }
