@@ -2,7 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { postNewUser } from '../utilz/apiCalls';
 import { NavLink } from 'react-router-dom';
-import { createAcct } from '../actions';
+// import { createAcct } from '../actions';
+import { signIn } from '../actions';
+import { fetchUser } from '../utilz/apiCalls';
 
 
 class SignUpForm extends React.Component {
@@ -22,8 +24,9 @@ class SignUpForm extends React.Component {
     handleSubmit = async (e) => {
         // e.preventDefault();
         const { name, email, password } = this.state;
-        const user =  await postNewUser(name, email, password)
-        this.props.createNewUser(user);
+        await postNewUser(name, email, password)
+        let newUser = await fetchUser(email, password)
+        this.props.signIn(newUser);
         this.clearInputs()
     }
 
@@ -76,7 +79,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    createNewUser: (user) => dispatch(createAcct(user))
+    signIn: (user) => dispatch(signIn(user))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUpForm);
