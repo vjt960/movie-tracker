@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { loadMovies } from '../actions';
+import { loadComplete } from '../actions';
 import { fetchMovieData } from '../utilz/apiCalls';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
@@ -13,18 +14,19 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    const { handleFetch } = this.props;
+    const { handleFetch, endLoading } = this.props;
     fetchMovieData()
       .then(data => data)
-      .then(movies => handleFetch(movies));
+      .then(movies => handleFetch(movies))
+      .then(() => endLoading());
   };
 
   render() {
-    const homeDisplay = this.props.movies.length && <MoviesDisplay />;
+    const { isLoading } = this.props;
     return (
       <main className="app">
         <Header />
-        <Route exact path="/" render={() => homeDisplay} />
+        <Route exact path="/" render={() => !isLoading && <MoviesDisplay />} />
         <Route exact path="/login" render={() => <LoginForm />} />
       </main>
     );
@@ -32,11 +34,12 @@ class App extends Component {
 }
 
 export const mapStateToProps = state => {
-  return { movies: state.movies };
+  return { movies: state.movies, isLoading: state.isLoading };
 };
 
 export const mapDispatchToProps = dispatch => ({
-  handleFetch: movies => dispatch(loadMovies(movies))
+  handleFetch: movies => dispatch(loadMovies(movies)),
+  endLoading: () => dispatch(loadComplete())
 });
 
 export default connect(
