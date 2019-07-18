@@ -7,40 +7,39 @@ import LoginForm from './LoginForm';
 import MoviesDisplay from './MoviesDisplay';
 import Header from './Header';
 
-
 class App extends Component {
-constructor(props) {
-  super()
-}
+  constructor() {
+    super();
+  }
 
-componentDidMount = async () => {
-  const { handleFetch } = this.props;
-  fetchMovieData()
-  .then(data => data)
-  .then(movies => handleFetch(movies))
-}
+  componentDidMount = () => {
+    const { handleFetch } = this.props;
+    fetchMovieData()
+      .then(data => data)
+      .then(movies => handleFetch(movies));
+  };
 
   render() {
-    const homeDisplay = (
-      (this.props.movies.length) && 
-      <MoviesDisplay />
-    )
+    const homeDisplay = this.props.movies.length && <MoviesDisplay />;
     return (
-      <main className='app'>
+      <main className="app">
         <Header />
-      <Route exact path='/' render = {() => homeDisplay} />
-      <Route exact path='/login' render = {() => <LoginForm />} />
+        <Route exact path="/" render={() => homeDisplay} />
+        <Route exact path="/login" render={() => <LoginForm />} />
       </main>
     );
   }
 }
 
 export const mapStateToProps = state => {
-  return { movies:  state.movies }
-}
+  return { movies: state.movies };
+};
 
 export const mapDispatchToProps = dispatch => ({
   handleFetch: movies => dispatch(loadMovies(movies))
-})
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
