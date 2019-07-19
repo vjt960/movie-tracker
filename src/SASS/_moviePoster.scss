@@ -4,9 +4,10 @@
   align-items: center;
   margin: 0px 10px;
   width: 225px;
-  &:hover {
-    height: 1000px;
-    width: 1000px;
+    &:hover {
+      cursor: pointer;
+      height: 1000px;
+      width: 1000px;
   }
 }
 
