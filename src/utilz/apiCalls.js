@@ -41,7 +41,7 @@ export const postNewUser = async (name, email, password) => {
     const url = 'http://localhost:3000/api/users/new';
     const getUserData = await fetch(url, options);
     const response = await getUserData.json();
-    console.log(response.id)
+    return response;
   }
   catch(error) {
     throw Error('Error creating user')

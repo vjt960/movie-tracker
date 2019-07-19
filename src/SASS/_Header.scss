@@ -1,5 +1,5 @@
 header {
-  height: 100px;
+  height: 75px;
   display: grid;
   grid-template-columns: 70% 15% 15%;
   // border-bottom: 2px solid #f1f1f1;
@@ -12,7 +12,7 @@ h1 {
   padding: 10px;
   grid-column-start: 1;
   grid-column-end: 2;
-  margin: auto;
+  margin-left: auto;
 }
 
 .header-btns-container {
