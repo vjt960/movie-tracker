@@ -28,6 +28,14 @@ export const addFavorite = () => ({
   type: 'ADD_FAVORITE'
 });
 
+export const setHover = () => ({
+  type: 'SET_HOVER'
+});
+
+export const cancelHover = () => ({
+  type: 'CANCEL_HOVER'
+});
+
 export const viewFavorites = () => ({});
 
 export const deleteFavorite = () => ({});
