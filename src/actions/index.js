@@ -24,10 +24,17 @@ export const createAcct = (name, email, password) => ({
 });
 
 
-export const addFavorite = () => ({
-  type: 'ADD_FAVORITE'
+export const addFavorite = (fave) => ({
+  type: 'ADD_FAVORITE',
+  fave
 });
 
-export const viewFavorites = () => ({});
+export const viewFavorites = (allFaves) => ({
+    type: 'VIEW_FAVORITES',
+    allFaves
+});
 
-export const deleteFavorite = () => ({});
+export const deleteFavorite = (id) => ({
+    type: 'DELETE_FAVORITE',
+    id
+});

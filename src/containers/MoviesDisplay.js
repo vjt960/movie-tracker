@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import {addFavorite, viewFavorites, deleteFavorite } from '../actions'
 import MoviePoster from '../components/MoviePoster';
 
 const MoviesDisplay = ({ movies }) => {
@@ -10,6 +11,8 @@ const MoviesDisplay = ({ movies }) => {
         posterPath={movie.poster_path}
         key={movie.id}
         releaseDate={movie.release_date}
+        addFavorite={this.props.addFavorite}
+        deleteFavorite={this.props.deleteFavorite}
       />
     );
   });
@@ -20,4 +23,10 @@ const mapStateToProps = state => {
   return { movies: state.movies[0] };
 };
 
-export default connect(mapStateToProps)(MoviesDisplay);
+const mapDispatchToProps = dispatch => ({
+  addFavorite: fave => dispatch(addFavorite(fave)),
+  viewFavorites: allFaves => dispatch(viewFavorites(allFaves)),
+  deleteFavorite: id => dispatch(deleteFavorite(id))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(MoviesDisplay);
