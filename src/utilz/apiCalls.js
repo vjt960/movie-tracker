@@ -1,11 +1,13 @@
+import cleanMovieData from './cleaner';
+
 export const fetchMovieData = async () => {
   try {
     const url =
       'https://api.themoviedb.org/3/movie/now_playing?api_key=bc73a3f54b2574050b44222a2380ea37&language=en-US&sort_by=now_playing.dsc&include_adult=false&include_video=false&page=1';
     const response = await fetch(url);
-    const movieData = await response.json();
-
-    return movieData.results;
+    const parsedData = await response.json();
+    const movieData = cleanMovieData(parsedData.results)
+    return movieData;
   } catch (error) {
     throw Error('Error fetching movies');
   }

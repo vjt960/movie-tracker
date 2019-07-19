@@ -14,9 +14,9 @@ const MoviesDisplay = ({ movies }) => {
     return (
       <MoviePoster
         title={movie.title}
-        posterPath={movie.poster_path}
+        posterPath={movie.poster}
         key={movie.id}
-        releaseDate={movie.release_date}
+        releaseDate={movie.releaseDate}
         // onMouseOver={this.handleHover}
         // onMouseOut={this.handleHover}
       />

@@ -3,9 +3,9 @@ export const moviesReducer = (state = [], action) => {
     case 'LOAD_MOVIES':
       return [...state, action.movies];
     case 'SET_HOVER':
-      return state.isHovering = true;
+      return state.currentHover = true;
     case 'CANCEL_HOVER':
-      return state.isHovering = false;
+      return state.currentHover = false;
       
     default:
       return state;
