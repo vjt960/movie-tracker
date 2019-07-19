@@ -22,7 +22,9 @@ class LoginForm extends Component {
     // e.preventDefault();
     const { email, password } = this.state;
     let user = await fetchUser(email, password);
-    this.props.setUser(user);
+    if (user) {
+      this.props.signIn(user);
+    }
     this.clearInputs();
   };
 

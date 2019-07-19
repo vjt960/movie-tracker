@@ -24,12 +24,10 @@ class SignUpForm extends Component {
     // e.preventDefault();
     const { name, email, password } = this.state;
     await postNewUser(name, email, password)
-    let newUser = await fetchUser(email, password)
-    if (!newUser.ok) {
-      alert('Email/Password Error');
-      return;
+    if (postNewUser.ok) {
+      let newUser = await fetchUser(email, password)
+      this.props.signIn(newUser);
     }
-    this.props.signIn(newUser);
     this.clearInputs()
   }
 
