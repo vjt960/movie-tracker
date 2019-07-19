@@ -14,4 +14,4 @@ const cleanMovieData = (movieData) => {
   })
 }
 
-export default cleanMovieData
+export default cleanMovieData;

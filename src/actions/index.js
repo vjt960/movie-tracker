@@ -28,12 +28,14 @@ export const addFavorite = () => ({
   type: 'ADD_FAVORITE'
 });
 
-export const setHover = () => ({
-  type: 'SET_HOVER'
+export const setHover = (id) => ({
+  type: 'SET_HOVER',
+  id
 });
 
-export const cancelHover = () => ({
-  type: 'CANCEL_HOVER'
+export const cancelHover = (id) => ({
+  type: 'CANCEL_HOVER',
+  id
 });
 
 export const viewFavorites = () => ({});

@@ -18,7 +18,7 @@ class LoginForm extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  handleSubmit = async e => {
+  handleSubmit = async () => {
     // e.preventDefault();
     const { email, password } = this.state;
     let user = await fetchUser(email, password);

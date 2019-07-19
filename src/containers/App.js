@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { loadMovies } from '../actions';
-import { loadComplete } from '../actions';
+import { loadMovies, loadComplete } from '../actions';
 import { fetchMovieData } from '../utilz/apiCalls';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';

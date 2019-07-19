@@ -3,8 +3,12 @@ export const moviesReducer = (state = [], action) => {
     case 'LOAD_MOVIES':
       return [...state, action.movies];
     case 'SET_HOVER':
-      return state.currentHover = true;
+      console.log(action.id);
+      return state.filter(movie => {
+        return movie.id === action.id
+      })
     case 'CANCEL_HOVER':
+      console.log('whyyyy');
       return state.currentHover = false;
       
     default:

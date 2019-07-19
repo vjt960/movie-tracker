@@ -4,21 +4,17 @@ import MoviePoster from '../components/MoviePoster';
 import MoviesDetailDisplay from '../components/movieDetailsDisplay';
 import { setHover, cancelHover } from '../actions';
 
-const MoviesDisplay = ({ movies }) => {
-
-  // const handleHover = () => {
-
-  // }
-
+const MoviesDisplay = ({ movies, setHover, cancelHover }) => {
   const allMovies = movies.map(movie => {
     return (
       <MoviePoster
         title={movie.title}
         posterPath={movie.poster}
         key={movie.id}
+        id={movie.id}
         releaseDate={movie.releaseDate}
-        // onMouseOver={this.handleHover}
-        // onMouseOut={this.handleHover}
+        setHover={setHover}
+        cancelHover={cancelHover}
       />
     );
   });
@@ -43,4 +39,7 @@ const mapDispatchToProps = dispatch => ({
   cancelHover: () => dispatch(cancelHover())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(MoviesDisplay);
+export default connect(
+  mapStateToProps, 
+  mapDispatchToProps
+)(MoviesDisplay);
