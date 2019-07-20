@@ -59,7 +59,6 @@ class LoginForm extends Component {
           value={this.state.password}
         />
         <button
-          // to="/"
           className="login-input login-btn"
           onClick={e => this.handleSubmit(e)}
         >
