@@ -27,7 +27,6 @@ export const fetchUser = async (email, password) => {
     }
     const response = await getUserData.json();
     const userData = await response.data;
-
     return userData;
   } catch (error) {
     throw new Error(error.message);
