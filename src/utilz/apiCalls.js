@@ -1,11 +1,13 @@
+import cleanMovieData from './cleaner';
+
 export const fetchMovieData = async () => {
   try {
     const url =
       'https://api.themoviedb.org/3/movie/now_playing?api_key=bc73a3f54b2574050b44222a2380ea37&language=en-US&sort_by=now_playing.dsc&include_adult=false&include_video=false&page=1';
     const response = await fetch(url);
-    const movieData = await response.json();
-
-    return movieData.results;
+    const parsedData = await response.json();
+    const movieData = cleanMovieData(parsedData.results)
+    return movieData;
   } catch (error) {
     throw Error('Error fetching movies');
   }
@@ -20,6 +22,10 @@ export const fetchUser = async (email, password) => {
     };
     const url = 'http://localhost:3000/api/users';
     const getUserData = await fetch(url, options);
+    if (!getUserData.ok) {
+      alert('Email/Password Incorrect');
+      return;
+    }
     const response = await getUserData.json();
     const userData = await response.data;
 
@@ -38,8 +44,12 @@ export const postNewUser = async (name, email, password) => {
     }
     const url = 'http://localhost:3000/api/users/new';
     const getUserData = await fetch(url, options);
+    if (!getUserData.ok) {
+      alert('Email already exists');
+      return;
+    }
     const response = await getUserData.json();
-    console.log(response.id)
+    return response;
   }
   catch(error) {
     throw Error('Error creating user')
