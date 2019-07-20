@@ -7,9 +7,17 @@ export const userReducer = (state = {}, { type, user }) => {
       return (state = {});
 
     case 'CREATE_ACCT':
-      return {...user, id: Date.now()};
+      return { ...user, id: Date.now() };
 
+    default:
+      return state;
+  }
+};
 
+export const errorReducer = (state = '', action) => {
+  switch (action.type) {
+    case 'HAS_ERRORED':
+      return action.errorMessage;
     default:
       return state;
   }
