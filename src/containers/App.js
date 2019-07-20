@@ -11,10 +11,14 @@ import Header from './Header';
 class App extends Component {
   componentDidMount = () => {
     const { handleFetch, endLoading } = this.props;
-    fetchMovieData()
-      .then(data => data)
-      .then(movies => handleFetch(movies))
-      .then(() => endLoading());
+    try {
+      fetchMovieData()
+        .then(data => data)
+        .then(movies => handleFetch(movies))
+        .then(() => endLoading());
+    } catch ({ message }) {
+      console.log(message);
+    }
   };
 
   render() {
