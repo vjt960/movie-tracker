@@ -19,7 +19,6 @@ class LoginForm extends Component {
   };
 
   handleSubmit = async () => {
-    // e.preventDefault();
     const { email, password } = this.state;
     let user = await fetchUser(email, password);
     if (user) {
