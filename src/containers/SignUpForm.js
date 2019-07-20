@@ -20,23 +20,16 @@ class SignUpForm extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  handleSubmit = async e => {
+  handleSubmit = async (e) => {
     // e.preventDefault();
     const { name, email, password } = this.state;
-    const user = await postNewUser(name, email, password);
-    this.props.createNewUser(user);
-    this.clearInputs();
-  };
-
-
-    handleSubmit = async (e) => {
-        // e.preventDefault();
-        const { name, email, password } = this.state;
-        await postNewUser(name, email, password)
-        let newUser = await fetchUser(email, password)
-        this.props.signIn(newUser);
-        this.clearInputs()
+    await postNewUser(name, email, password)
+    if (postNewUser.ok) {
+      let newUser = await fetchUser(email, password)
+      this.props.signIn(newUser);
     }
+    this.clearInputs()
+  }
 
     clearInputs = () => {
         this.setState({name: '', email: '', password: ''})
