@@ -18,11 +18,14 @@ class LoginForm extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  handleSubmit = async () => {
+  handleSubmit = async e => {
+    e.preventDefault();
     const { email, password } = this.state;
-    let user = await fetchUser(email, password);
-    if (user) {
+    try {
+      let user = await fetchUser(email, password);
       this.props.signIn(user);
+    } catch ({ message }) {
+      console.log(message);
     }
     this.clearInputs();
   };
@@ -72,7 +75,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  setUser: user => dispatch(signIn(user))
+  signIn: user => dispatch(signIn(user))
 });
 
 export default connect(

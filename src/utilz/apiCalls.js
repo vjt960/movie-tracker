@@ -23,15 +23,14 @@ export const fetchUser = async (email, password) => {
     const url = 'http://localhost:3000/api/users';
     const getUserData = await fetch(url, options);
     if (!getUserData.ok) {
-      alert('Email/Password Incorrect');
-      return;
+      throw new Error('Sorry. Incorrect email or password.');
     }
     const response = await getUserData.json();
     const userData = await response.data;
 
     return userData;
   } catch (error) {
-    throw Error('Error fetching user');
+    throw new Error(error.message);
   }
 };
 
@@ -45,12 +44,11 @@ export const postNewUser = async (name, email, password) => {
     const url = 'http://localhost:3000/api/users/new';
     const getUserData = await fetch(url, options);
     if (!getUserData.ok) {
-      alert('Email already exists');
-      return;
+      throw new Error('Sorry. An account with that email already exists.');
     }
     const response = await getUserData.json();
     return response;
   } catch (error) {
-    throw Error('Error creating user');
+    throw new Error(error.message);
   }
 };
