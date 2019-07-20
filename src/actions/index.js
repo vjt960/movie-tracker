@@ -23,6 +23,11 @@ export const createAcct = (name, email, password) => ({
   password
 });
 
+export const hasErrored = errorMessage => ({
+  type: 'HAS_ERRORED',
+  errorMessage
+});
+
 export const addFavorite = id => ({
   type: 'ADD_FAVORITE',
   id
