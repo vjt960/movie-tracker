@@ -2,9 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import MoviePoster from '../components/MoviePoster';
 import MoviesDetailDisplay from '../components/movieDetailsDisplay';
-import { setHover, cancelHover } from '../actions';
 
-const MoviesDisplay = ({ movies, setHover, cancelHover }) => {
+const MoviesDisplay = ({ movies }) => {
   const allMovies = movies.map(movie => {
     return (
       <MoviePoster
@@ -13,8 +12,8 @@ const MoviesDisplay = ({ movies, setHover, cancelHover }) => {
         key={movie.id}
         id={movie.id}
         releaseDate={movie.releaseDate}
-        setHover={setHover}
-        cancelHover={cancelHover}
+        // setHover={setHover}
+        // cancelHover={cancelHover}
       />
     );
   });
@@ -34,12 +33,12 @@ const mapStateToProps = state => {
   return { movies: state.movies[0] };
 };
 
-const mapDispatchToProps = dispatch => ({
-  setHover:  (title) => dispatch(setHover(title)),
-  cancelHover: () => dispatch(cancelHover())
-})
+// const mapDispatchToProps = dispatch => ({
+//   setHover:  (title) => dispatch(setHover(title)),
+//   cancelHover: () => dispatch(cancelHover())
+// })
 
 export default connect(
-  mapStateToProps, 
-  mapDispatchToProps
+  mapStateToProps
+  // mapDispatchToProps
 )(MoviesDisplay);
