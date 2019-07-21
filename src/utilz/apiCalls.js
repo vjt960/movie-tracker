@@ -1,9 +1,9 @@
 import cleanMovieData from './cleaner';
+import { apiKey } from './apiKey';
 
 export const fetchMovieData = async () => {
   try {
-    const url =
-      'https://api.themoviedb.org/3/movie/now_playing?api_key=&language=en-US&sort_by=now_playing.dsc&include_adult=false&include_video=false&page=1';
+    const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&sort_by=now_playing.dsc&include_adult=false&include_video=false&page=1`;
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error('Sorry. Unable to retrieve movies.');
