@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+// import {addFavorite, viewFavorites, deleteFavorite } from '../actions'
+// import { addNewFavorite } from '../utilz/apiCalls'
 import MoviePoster from '../components/MoviePoster';
 import MoviesDetailDisplay from '../components/movieDetailsDisplay';
 import { focusMovie, cancelFocus } from '../actions';
@@ -11,7 +13,6 @@ const MoviesDisplay = ({ movies, focusMovie, focusedMovie, cancelFocus }) => {
     const foundMovie = movies.find(movie => movie.movie_id === id)
     focusMovie(foundMovie)
   }
-
   const allMovies = movies.map(movie => {
     return (
       <MoviePoster
@@ -25,7 +26,6 @@ const MoviesDisplay = ({ movies, focusMovie, focusedMovie, cancelFocus }) => {
       />
     );
   });
-  
 
   return (
   <section className="movie-display">

@@ -1,5 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux'
+import { addNewFavorite } from '../utilz/apiCalls'
+import { addFavorite, viewFavorites, deleteFavorite } from '../actions'
 import activeFavIcon from '../images/001-heart.svg'
+import { statements } from '@babel/template';
+import { compose } from '../../../../../Library/Caches/typescript/3.4.3/node_modules/redux';
 // import inactiveFavIcon from '../images/002-heart-1.svg'
 
 class MoviePoster extends React.Component {
@@ -38,7 +43,5 @@ class MoviePoster extends React.Component {
     )
   }
 }
-
-
 
 export default MoviePoster;
