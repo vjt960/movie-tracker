@@ -4,10 +4,14 @@ const MovieDetailsDisplay = ({ foundMovie }) => {
   console.log('movie', foundMovie)
   return (
     <section className='movie-details-display '>
-      {foundMovie && <p>{foundMovie.title}</p>}
-      {foundMovie && <p>{foundMovie.overview}</p>}
-      {foundMovie && <p>{foundMovie.vote_average}</p>}
-      {foundMovie && <p>{foundMovie.release_date}</p>}
+      {foundMovie && 
+        <p className='details-title'>{foundMovie.title}</p>}
+      {foundMovie && 
+        <p className='details-overview'>{foundMovie.overview}</p>}
+      {foundMovie && 
+        <p className='details-vote-average'>{foundMovie.vote_average}</p>}
+      {foundMovie && 
+        <p className='details-release-date'>{foundMovie.release_date}</p>}
     </section>
   )
 }

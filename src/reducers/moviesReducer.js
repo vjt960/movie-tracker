@@ -11,6 +11,8 @@ export const focusMovieReducer = (state = {}, action) => {
   switch(action.type) {
     case 'FOCUS_MOVIE':
       return action.movie; 
+    case 'CANCEL_FOCUS':
+      return state = {};
     default:
       return state;
   }

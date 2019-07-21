@@ -38,9 +38,8 @@ export const focusMovie = movie => ({
   movie
 });
 
-export const cancelHover = id => ({
-  type: 'CANCEL_HOVER',
-  id
+export const cancelFocus = () => ({
+  type: 'CANCEL_FOCUS',
 });
 
 // export const viewFavorites = () => ({});

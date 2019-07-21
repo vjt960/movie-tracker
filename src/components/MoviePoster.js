@@ -7,15 +7,19 @@ class MoviePoster extends React.Component {
     super(props)
     this.state = {
       isFavored: false,
-      currentHover: false
+      // currentHover: false
     }
   }
 
-  handleHover = (e) => {
+  setHover = (e) => {
     e.preventDefault()
-    this.setState({ currentHover: !this.state.currentHover });
+    // this.setState({ currentHover: !this.state.currentHover });
     this.props.findMovie(parseInt(e.target.id));
   };
+
+  cancelFocus = () => {
+    this.props.cancelFocus()
+  }
 
   render() {
     return(
@@ -25,8 +29,8 @@ class MoviePoster extends React.Component {
           alt={`${this.props.title}-poster`} 
           className='poster-img' 
           id={`${this.props.id}`}
-          onMouseEnter={(e) => this.handleHover(e)}
-          onMouseLeave={(e) => this.handleHover(e)}
+          onMouseEnter={(e) => this.setHover(e)}
+          onMouseLeave={() => this.cancelFocus()}
         />
         <p className='poster-title'>{this.props.title}</p>
         <img src={activeFavIcon} className='favorite-icon' alt='favorite-icon'/>
