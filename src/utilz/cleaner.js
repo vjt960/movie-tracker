@@ -7,9 +7,7 @@ const cleanMovieData = (movieData) => {
       poster: movie.poster_path,
       backdrop: movie.backdrop_path,
       overview: movie.overview,
-      releaseDate: movie.release_date,
-      isFavorited: false,
-      currentHover: false
+      releaseDate: movie.release_date
     }
   })
 }
