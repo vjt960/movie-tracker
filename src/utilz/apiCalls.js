@@ -1,5 +1,5 @@
 import cleanMovieData from './cleaner';
-import { apiKey } from './apiKey';
+import apiKey from './apiKey';
 
 export const fetchMovieData = async () => {
   try {
