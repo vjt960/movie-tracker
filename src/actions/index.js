@@ -23,21 +23,26 @@ export const createAcct = (name, email, password) => ({
   password
 });
 
-
-export const addFavorite = () => ({
-  type: 'ADD_FAVORITE'
+export const hasErrored = errorMessage => ({
+  type: 'HAS_ERRORED',
+  errorMessage
 });
 
-export const setHover = (id) => ({
+export const addFavorite = id => ({
+  type: 'ADD_FAVORITE',
+  id
+});
+
+export const setHover = id => ({
   type: 'SET_HOVER',
   id
 });
 
-export const cancelHover = (id) => ({
+export const cancelHover = id => ({
   type: 'CANCEL_HOVER',
   id
 });
 
-export const viewFavorites = () => ({});
+// export const viewFavorites = () => ({});
 
 export const deleteFavorite = () => ({});

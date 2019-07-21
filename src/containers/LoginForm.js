@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchUser } from '../utilz/apiCalls';
-import { signIn } from '../actions';
+import { signIn, hasErrored } from '../actions';
+import { withRouter } from 'react-router-dom';
 
 class LoginForm extends Component {
   constructor() {
@@ -18,12 +19,17 @@ class LoginForm extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  handleSubmit = async () => {
-    // e.preventDefault();
+  handleSubmit = async e => {
+    e.preventDefault();
     const { email, password } = this.state;
-    let user = await fetchUser(email, password);
-    if (user) {
+    try {
+      let user = await fetchUser(email, password);
       this.props.signIn(user);
+      this.props.history.push('/');
+      this.props.hasErrored('');
+    } catch ({ message }) {
+      this.props.hasErrored(message);
+      this.props.history.push('/login');
     }
     this.clearInputs();
   };
@@ -35,6 +41,7 @@ class LoginForm extends Component {
   render() {
     return (
       <form className="login-form">
+        <legend>{this.props.error}</legend>
         <input
           type="email"
           name="email"
@@ -51,13 +58,12 @@ class LoginForm extends Component {
           onChange={this.handleChange}
           value={this.state.password}
         />
-        <NavLink
-          to="/"
+        <button
           className="login-input login-btn"
           onClick={e => this.handleSubmit(e)}
         >
           Sign-In
-        </NavLink>
+        </button>
         <NavLink to="/signup" className="login-create-acct-btn">
           <p className="login-create-acct">
             Don't have an account? Create one now!
@@ -69,14 +75,18 @@ class LoginForm extends Component {
 }
 
 const mapStateToProps = state => ({
-  user: state.user
+  user: state.user,
+  error: state.error
 });
 
 const mapDispatchToProps = dispatch => ({
-  setUser: user => dispatch(signIn(user))
+  signIn: user => dispatch(signIn(user)),
+  hasErrored: errorMessage => dispatch(hasErrored(errorMessage))
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(LoginForm);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(LoginForm)
+);
