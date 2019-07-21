@@ -28,10 +28,6 @@ export const hasErrored = errorMessage => ({
   errorMessage
 });
 
-export const addFavorite = id => ({
-  type: 'ADD_FAVORITE',
-  id
-});
 
 export const setHover = id => ({
   type: 'SET_HOVER',

@@ -52,27 +52,29 @@ export const postNewUser = async (name, email, password) => {
   }
 }
 
-  export const addNewFavorite = async (movieId, userId, title, posterPath, releaseDate, voteAverage, overview) => {
+  export const addNewFavorite = async (userId, movie) => {
     try {
       const options = {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: {
-          movie_id: movieId,
           user_id: userId,
-          title: title,
-          posterPath: poster_path,
-          releaseDate: release_date,
-          voteAverage: vote_Average,
-          overview: overview
+          movie_id: movie.movie_id,
+          title: movie.title,
+          poster_path: movie.poster_path,
+          release_date: movie.release_date,
+          vote_average: movie.vote_average,
+          overview: movie.overview
          }
       }
       const url = 'http://localhost:3000/api/users/favorites/new'
-      const getFavorites = await fetch(url, options)
-      const response = await getFavorites.json()
-      console.log(response.id)
-
+      const addFavorite = await fetch(url, options)
+      if(!addFavorite.ok) {
+        throw new Error('Oops! You\'ve already added this movie to your favorites.')
+      }
+      const response = await addFavorite.json()
+      return response;
     } catch(error) {
-      throw Error('Error adding favorite')
+      throw Error(error.message)
     }
   };
