@@ -1,5 +1,4 @@
 import React from 'react';
-// import activeFavIcon from '../images/001-heart.svg';
 
 class MoviePoster extends React.Component {
   constructor() {
