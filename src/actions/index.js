@@ -40,14 +40,13 @@ export const deleteFavorite = () => ({
     type: 'DELETE_FAVORITES'
 });
 
-export const setHover = id => ({
-  type: 'SET_HOVER',
-  id
+export const focusMovie = movie => ({
+  type: 'FOCUS_MOVIE',
+  movie
 });
 
-export const cancelHover = id => ({
-  type: 'CANCEL_HOVER',
-  id
+export const cancelFocus = () => ({
+  type: 'CANCEL_FOCUS',
 });
 
 

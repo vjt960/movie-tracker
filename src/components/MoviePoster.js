@@ -7,51 +7,41 @@ import { statements } from '@babel/template';
 import { compose } from '../../../../../Library/Caches/typescript/3.4.3/node_modules/redux';
 // import inactiveFavIcon from '../images/002-heart-1.svg'
 
-// const MoviePoster = ({title, overview, releaseDate, vote_average, posterPath, id, setHover, cancelHover, addFavorite }) => {
-// }
-
 class MoviePoster extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props)
     this.state = {
-      isFavorited: false,
-      currentHover: false
+      isFavored: false,
+      // currentHover: false
     }
   }
-  
-  handleFavorite = async (e) => {
-    e.preventDefault();
-    const findMovie = this.props.movies[0].find(movie => movie.id === parseInt(e.target.id))
-    console.log('1', findMovie)
-    const newFave = await addNewFavorite(findMovie)
-    // this.props.addFavorite(n)
-    console.log('2', newFave)
-    this.setState({isFavorited: !this.state.isFavorited})
-    
-  }
-  
-  render() {
-    const { posterPath, title, id } = this.props;
-    return(
-      <article className='movie-poster' id={id}>
-        <img src={`https://image.tmdb.org/t/p/w500/${posterPath}`} alt={`${title}-poster`} className='poster-img' />
 
-        <p className='poster-title'>{title}</p>
-        <img src={activeFavIcon} onClick={e => this.handleFavorite(e)} className='favorite-icon' alt='favorite-icon' id={id}/>
+  setHover = (e) => {
+    e.preventDefault()
+    // this.setState({ currentHover: !this.state.currentHover });
+    this.props.findMovie(parseInt(e.target.id));
+  };
+
+  cancelFocus = () => {
+    this.props.cancelFocus()
+  }
+
+  render() {
+    return(
+      <article className='movie-poster'>
+        <img 
+          src={`https://image.tmdb.org/t/p/w500/${this.props.posterPath}`} 
+          alt={`${this.props.title}-poster`} 
+          className='poster-img' 
+          id={`${this.props.id}`}
+          onMouseEnter={(e) => this.setHover(e)}
+          onMouseLeave={() => this.cancelFocus()}
+        />
+        <p className='poster-title'>{this.props.title}</p>
+        <img src={activeFavIcon} className='favorite-icon' alt='favorite-icon'/>
       </article>
     )
   }
 }
 
-const mapStateToProps = state => ({
-  user: state.user.id,
-  movies: state.movies
-})
-
-const mapDispatchToProps = dispatch => ({
-  addFavorite: fave => dispatch(addFavorite(fave)),
-  viewFavorites: allFaves => dispatch(viewFavorites(allFaves)),
-  deleteFavorite: id => dispatch(deleteFavorite(id))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(MoviePoster);
+export default MoviePoster;
