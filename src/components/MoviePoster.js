@@ -18,11 +18,37 @@ class MoviePoster extends React.Component {
   };
 
   handleFavorite = () => {
-    //
+    if (this.props.user) {
+      this.toggleFavorite(this.props.user.id);
+    } else {
+      //prompt user login form
+    }
   };
 
-  toggleFavorite = () => {
-    //
+  toggleFavorite = userID => {
+    const {
+      id,
+      title,
+      posterPath,
+      releaseDate,
+      voteAvg,
+      overview
+    } = this.props;
+    const url = 'http://localhost:3000//api/users/favorites/new';
+    const options = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        movie_id: id,
+        user_id: userID,
+        title,
+        poster_path: posterPath,
+        release_date: releaseDate,
+        vote_average: voteAvg,
+        overview
+      })
+    };
+    fetch(url, options).then(movieID => movieID);
   };
 
   render() {
