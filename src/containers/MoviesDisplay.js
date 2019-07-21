@@ -39,14 +39,9 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-<<<<<<< HEAD
   addFavorite: fave => dispatch(addFavorite(fave)),
   viewFavorites: allFaves => dispatch(viewFavorites(allFaves)),
-  deleteFavorite: id => dispatch(deleteFavorite(id))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(MoviesDisplay);
-=======
+  deleteFavorite: id => dispatch(deleteFavorite(id)),
   setHover:  () => dispatch(setHover()),
   cancelHover: () => dispatch(cancelHover())
 })
@@ -55,4 +50,3 @@ export default connect(
   mapStateToProps, 
   mapDispatchToProps
 )(MoviesDisplay);
->>>>>>> a4b29ee91f8ad75d10f8ee5a4c3dbcdf4a46e7f7
