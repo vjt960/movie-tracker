@@ -12,7 +12,9 @@ class MoviePoster extends React.Component {
   }
 
   handleHover = (e) => {
-    console.log(e.target.id)
+    e.preventDefault()
+    this.setState({ currentHover: !this.state.currentHover });
+    this.props.findMovie(parseInt(e.target.id));
   };
 
   render() {
@@ -21,8 +23,10 @@ class MoviePoster extends React.Component {
         <img 
           src={`https://image.tmdb.org/t/p/w500/${this.props.posterPath}`} 
           alt={`${this.props.title}-poster`} 
-          className='poster-img' id={`poster-${this.props.id}`}
+          className='poster-img' 
+          id={`${this.props.id}`}
           onMouseEnter={(e) => this.handleHover(e)}
+          onMouseLeave={(e) => this.handleHover(e)}
         />
         <p className='poster-title'>{this.props.title}</p>
         <img src={activeFavIcon} className='favorite-icon' alt='favorite-icon'/>

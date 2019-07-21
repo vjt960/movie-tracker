@@ -2,25 +2,32 @@ import React from 'react';
 import { connect } from 'react-redux';
 import MoviePoster from '../components/MoviePoster';
 import MoviesDetailDisplay from '../components/movieDetailsDisplay';
+import { focusMovie } from '../actions';
 
-const MoviesDisplay = ({ movies }) => {
+
+const MoviesDisplay = ({ movies, focusMovie, focusedMovie }) => {
+  let findMovie = (id) => {
+    const foundMovie = movies.find(movie => movie.movie_id === id)
+    focusMovie(foundMovie)
+  }
   const allMovies = movies.map(movie => {
     return (
       <MoviePoster
         title={movie.title}
-        posterPath={movie.poster}
-        key={movie.id}
-        id={movie.id}
-        releaseDate={movie.releaseDate}
-        // setHover={setHover}
-        // cancelHover={cancelHover}
+        posterPath={movie.poster_path}
+        key={movie.movie_id}
+        id={movie.movie_id}
+        releaseDate={movie.release_date}
+        findMovie={findMovie}
       />
     );
   });
+  
+
   return (
   <section className="movie-display">
     <section className='movie-details'>
-      <MoviesDetailDisplay />
+      <MoviesDetailDisplay foundMovie={focusedMovie}/>
     </section>
     <section className='movies-scroll'>
       {allMovies}
@@ -30,15 +37,17 @@ const MoviesDisplay = ({ movies }) => {
 };
 
 const mapStateToProps = state => {
-  return { movies: state.movies[0] };
+  return { 
+    movies: state.movies[0],
+    focusedMovie: state.focusedMovie
+  };
 };
 
-// const mapDispatchToProps = dispatch => ({
-//   setHover:  (title) => dispatch(setHover(title)),
-//   cancelHover: () => dispatch(cancelHover())
-// })
+const mapDispatchToProps = dispatch => ({
+  focusMovie: (movie) => dispatch(focusMovie(movie))
+})
 
 export default connect(
-  mapStateToProps
-  // mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(MoviesDisplay);
