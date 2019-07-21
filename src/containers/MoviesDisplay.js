@@ -25,6 +25,8 @@ const MoviesDisplay = ({
         key={movie.movie_id}
         id={movie.movie_id}
         releaseDate={movie.release_date}
+        voteAvg={movie.vote_average}
+        overview={movie.overview}
         findMovie={findMovie}
         cancelFocus={cancelFocus}
       />
