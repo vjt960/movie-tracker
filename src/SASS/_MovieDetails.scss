@@ -3,6 +3,9 @@
 }
 
 .movie-details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 90vw;
   height: 45vh;
   margin: auto;
@@ -15,5 +18,6 @@
 }
 
 .details-img {
-  max-height: 45vh;
+  height: 45vh;
+  width: auto;
 }
