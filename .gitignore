@@ -10,7 +10,7 @@
 
 # production
 /build
-apiKey.js
+# apiKey.js
 
 # misc
 .DS_Store
