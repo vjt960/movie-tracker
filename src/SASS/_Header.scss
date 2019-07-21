@@ -1,7 +1,7 @@
 header {
   height: 10vh;
   display: grid;
-  grid-template-columns: 70% 15% 15%;
+  grid-template-columns: 30% 40% 15% 15%;
 }
 
 h1 {
@@ -9,17 +9,18 @@ h1 {
   width: fit-content;
   font-size: 50px;
   padding: 10px;
-  grid-column-start: 1;
-  grid-column-end: 2;
-  margin-left: auto;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  margin: auto;
 }
 
 .header-btns-container {
   display: flex;
+  margin: auto;
   align-items: center;
   flex-direction: unset;
-  grid-column-start: 3;
-  grid-column-end: 4;
+  grid-column-start: 4;
+  grid-column-end: 5;
 }
 
 .sign-in-btn,
@@ -37,8 +38,8 @@ h1 {
 
 .header-greeting {
   display: flex;
-  grid-column-start: 2;
-  grid-column-end: 3;
+  grid-column-start: 3;
+  grid-column-end: 4;
   justify-content: center;
   align-items: center;
   color: white;
