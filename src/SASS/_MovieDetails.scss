@@ -4,26 +4,26 @@
 }
 
 .movie-details {
-  display: flex;
   align-items: center;
-  justify-content: center;
-  width: 90vw;
-  height: 45vh;
-  margin: auto;
   color: white;
+  display: flex;
+  height: 45vh;
+  justify-content: center;
+  margin: auto;
+  width: 90vw;
 }
 
 .details {
+  font-size: 1.5vw;
   margin: 1.3vw;
   text-align: center;
-  font-size: 1.5vw;
 }
 
 .details-img {
-  width: 50vw;
+  border-radius: 10%;
+  box-shadow: 0px 0px 8px #fff;
+  margin: auto;
   max-height: 260px;
   max-width: 600px;
-  box-shadow: 0px 0px 8px #fff;
-  border-radius: 10%;
-  margin: auto;
+  width: 50vw;
 }
