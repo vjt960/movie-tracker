@@ -27,9 +27,9 @@ export const createAcct = (user) => ({
 });
 
 
-export const addFavorite = id => ({
+export const addFavorite = fave => ({
     type: 'ADD_FAVORITE',
-    id
+    fave
 });
 
 export const viewFavorites = () => ({
