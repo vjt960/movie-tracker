@@ -17,6 +17,14 @@ class MoviePoster extends React.Component {
     this.props.cancelFocus();
   };
 
+  handleFavorite = () => {
+    //
+  };
+
+  toggleFavorite = () => {
+    //
+  };
+
   render() {
     return (
       <article className="movie-poster">
@@ -39,5 +47,9 @@ class MoviePoster extends React.Component {
     );
   }
 }
+
+mapDispatchToProps = dispatch => ({
+  //
+});
 
 export default MoviePoster;
