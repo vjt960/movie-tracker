@@ -41,7 +41,7 @@ class LoginForm extends Component {
   render() {
     return (
       <form className="login-form">
-        <legend>{this.props.error}</legend>
+        <legend className="error">{this.props.error}</legend>
         <input
           type="email"
           name="email"
