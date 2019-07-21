@@ -31,7 +31,10 @@ class App extends Component {
 }
 
 export const mapStateToProps = state => {
-  return { movies: state.movies, isLoading: state.isLoading };
+  return { 
+    movies: state.movies, 
+    isLoading: state.isLoading 
+  };
 };
 
 export const mapDispatchToProps = dispatch => ({

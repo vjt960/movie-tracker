@@ -35,7 +35,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  setHover:  () => dispatch(setHover()),
+  setHover:  (title) => dispatch(setHover(title)),
   cancelHover: () => dispatch(cancelHover())
 })
 
