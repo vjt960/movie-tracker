@@ -3,20 +3,16 @@
   flex-direction: column;
   color: white;
   height: fit-content;
-}
-
-.movie-details {
-  height: 275px;
-  width: 90vw;
-  margin: auto;
+  background-size: initial;
 }
 
 .movies-scroll {
   display: flex;
   overflow: scroll;
   justify-content: space-between;
+  align-items: center;
   color: white;
   padding: 10px;
-  height: 350px;
+  height: 45vh;
 }
 

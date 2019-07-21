@@ -1,27 +1,40 @@
 import React from 'react';
 import { connect } from 'react-redux';
+// import {addFavorite, viewFavorites, deleteFavorite } from '../actions'
+// import { addNewFavorite } from '../utilz/apiCalls'
 import MoviePoster from '../components/MoviePoster';
 import MoviesDetailDisplay from '../components/movieDetailsDisplay';
-import { setHover, cancelHover } from '../actions';
+import { focusMovie, cancelFocus } from '../actions';
 
-const MoviesDisplay = ({ movies, error, setHover, cancelHover }) => {
+const MoviesDisplay = ({
+  movies,
+  error,
+  focusMovie,
+  focusedMovie,
+  cancelFocus
+}) => {
+  const findMovie = id => {
+    const foundMovie = movies.find(movie => movie.movie_id === id);
+    focusMovie(foundMovie);
+  };
   const allMovies = movies.map(movie => {
     return (
       <MoviePoster
         title={movie.title}
-        posterPath={movie.poster}
-        key={movie.id}
-        id={movie.id}
-        releaseDate={movie.releaseDate}
-        setHover={setHover}
-        cancelHover={cancelHover}
+        posterPath={movie.poster_path}
+        key={movie.movie_id}
+        id={movie.movie_id}
+        releaseDate={movie.release_date}
+        findMovie={findMovie}
+        cancelFocus={cancelFocus}
       />
     );
   });
+
   return (
     <section className="movie-display">
       <section className="movie-details">
-        <MoviesDetailDisplay />
+        <MoviesDetailDisplay foundMovie={focusedMovie} />
       </section>
       <section className="movies-scroll">
         {allMovies ? allMovies : error}
@@ -31,12 +44,16 @@ const MoviesDisplay = ({ movies, error, setHover, cancelHover }) => {
 };
 
 const mapStateToProps = state => {
-  return { movies: state.movies[0], error: state.error };
+  return {
+    movies: state.movies[0],
+    focusedMovie: state.focusedMovie,
+    error: state.error
+  };
 };
 
 const mapDispatchToProps = dispatch => ({
-  setHover: () => dispatch(setHover()),
-  cancelHover: () => dispatch(cancelHover())
+  focusMovie: movie => dispatch(focusMovie(movie)),
+  cancelFocus: () => dispatch(cancelFocus())
 });
 
 export default connect(

@@ -1,7 +1,23 @@
+.movie-details-display {
+  display: flex;
+}
+
 .movie-details {
-  width: 800px;
-  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90vw;
+  height: 45vh;
   margin: auto;
-  background-color: grey;
   color: white;
+}
+
+.details {
+  margin: 1.3vw;
+  text-align: center;
+}
+
+.details-img {
+  height: 45vh;
+  width: auto;
 }

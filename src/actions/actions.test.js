@@ -50,6 +50,29 @@ describe('actions', () => {
     expect(result).toEqual(expectedAction);
   });
 
+  it('should have a type of LOAD_COMPLETE', () => {
+      const expectedAction = {
+          type: 'LOAD_COMPLETE'
+      }
+
+      const result = actions.loadComplete();
+
+      expect(result).toEqual(expectedAction)
+  });
+
+  it('should have a type of HAS_ERRORED', () => {
+    const errorMessage = 'Error loading';
+
+    const expectedAction = {
+      type: 'HAS_ERRORED',
+      errorMessage
+    };
+
+    const result = actions.hasErrored(errorMessage)
+
+    expect(result).toEqual(expectedAction)
+  })
+
   it('should have a type of SIGN_IN', () => {
     const user = {
       name: 'Arya',
@@ -83,9 +106,29 @@ describe('actions', () => {
     expect(result).toEqual(expectedAction);
   });
 
-  it('should have a type of CREATE_ACCT', () => {});
+  it('should have a type of CREATE_ACCT', () => {
+      const user = {
+        name: 'Arya',
+        email: 'agirlhasnoemail@aol.com',
+        password: 'IheartTheHound',
+        id: 1000
+      }
 
-  it('should have a type of ADD_FAVORITE', () => {});
+      const expectedAction = {
+          type: 'CREATE_ACCT',
+          user
+      }
+
+      const result = actions.createAcct(user)
+
+      expect(result).toEqual(expectedAction)
+  });
+
+  it('should have a type of ADD_FAVORITE', () => {
+
+  });
 
   it('should have a type of VIEW_FAVORITES', () => {});
+
+  it('should have a type of DELETE_FAVORITE', () => {})
 });

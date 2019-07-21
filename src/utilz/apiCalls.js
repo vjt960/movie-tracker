@@ -26,6 +26,7 @@ export const fetchUser = async (email, password) => {
     const url = 'http://localhost:3000/api/users';
     const getUserData = await fetch(url, options);
     if (!getUserData.ok) {
+      console.log('1', getUserData);
       throw new Error('Sorry. Incorrect email or password.');
     }
     const response = await getUserData.json();
@@ -52,5 +53,29 @@ export const postNewUser = async (name, email, password) => {
     return response;
   } catch (error) {
     throw new Error(error.message);
+  }
+};
+
+export const addNewFavorite = async movie => {
+  try {
+    const options = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        id: movie.id,
+        title: movie.title,
+        postePath: movie.poster_path,
+        releaseDate: movie.release_date,
+        voteAverage: movie.vote_average,
+        overview: movie.overview
+      })
+    };
+    const url = 'http://localhost:3000/api/users/favorites/new';
+    const postFavorite = await fetch(url, options);
+    console.log('3', postFavorite);
+    const response = await postFavorite.text();
+    console.log(response);
+  } catch (error) {
+    throw Error(error.message);
   }
 };
