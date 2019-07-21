@@ -1,24 +1,16 @@
 import React from 'react';
-// import { connect } from 'react-redux'
-// import { addNewFavorite } from '../utilz/apiCalls'
-// import { addFavorite, viewFavorites, deleteFavorite } from '../actions'
-import activeFavIcon from '../images/001-heart.svg';
-// import { statements } from '@babel/template';
-// import { compose } from '../../../../../Library/Caches/typescript/3.4.3/node_modules/redux';
-// import inactiveFavIcon from '../images/002-heart-1.svg'
+// import activeFavIcon from '../images/001-heart.svg';
 
 class MoviePoster extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       isFavored: false
-      // currentHover: false
     };
   }
 
   setHover = e => {
     e.preventDefault();
-    // this.setState({ currentHover: !this.state.currentHover });
     this.props.findMovie(parseInt(e.target.id));
   };
 
@@ -38,11 +30,12 @@ class MoviePoster extends React.Component {
           onMouseLeave={() => this.cancelFocus()}
         />
         <p className="poster-title">{this.props.title}</p>
-        <img
-          src={activeFavIcon}
+        <button
           className="favorite-icon"
-          alt="favorite-icon"
-        />
+          onClick={() => console.log('click fave')}
+        >
+          <span>favorite</span>
+        </button>
       </article>
     );
   }
