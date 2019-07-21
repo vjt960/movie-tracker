@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { loadMovies } from '../actions';
-import { loadComplete } from '../actions';
+import { loadMovies, loadComplete } from '../actions';
 import { fetchMovieData } from '../utilz/apiCalls';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
@@ -23,9 +22,9 @@ class App extends Component {
     return (
       <main className="app">
         <Header />
-        <Route exact path="/" render={() => !isLoading && <MoviesDisplay />} />
         <Route exact path="/login" render={() => <LoginForm />} />
         <Route exact path="/signup" render={() => <SignUpForm />} />
+        <Route exact path="/" render={() => !isLoading && <MoviesDisplay />} />
       </main>
     );
   }

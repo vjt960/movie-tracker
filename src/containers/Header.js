@@ -9,8 +9,8 @@ const Header = props => {
   return (
     <header>
       <h1>MOVIE-TRACKER</h1>
-      <p className='header-greeting'>{greeting}</p>
-      <div className='header-btns-container'>
+      <p className="header-greeting">{greeting}</p>
+      <div className="header-btns-container">
         <NavLink
           to="/login"
           className="sign-in-btn"
