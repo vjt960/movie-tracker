@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { loadMovies, loadComplete } from '../actions';
+import { loadMovies, loadComplete, hasErrored } from '../actions';
 import { fetchMovieData } from '../utilz/apiCalls';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
@@ -10,22 +10,24 @@ import Header from './Header';
 
 class App extends Component {
   componentDidMount = () => {
-    const { handleFetch, endLoading } = this.props;
+    const { handleFetch, endLoading, hasErrored } = this.props;
     try {
       fetchMovieData()
         .then(data => data)
         .then(movies => handleFetch(movies))
-        .then(() => endLoading());
+        .then(() => endLoading())
+        .catch(error => hasErrored(error.message));
     } catch ({ message }) {
-      console.log(message);
+      hasErrored(message);
     }
   };
 
   render() {
-    const { isLoading } = this.props;
+    const { isLoading, error } = this.props;
     return (
       <main className="app">
         <Header />
+        <h2 className="error">{error}</h2>
         <Route exact path="/login" render={() => <LoginForm />} />
         <Route exact path="/signup" render={() => <SignUpForm />} />
         <Route exact path="/" render={() => !isLoading && <MoviesDisplay />} />
@@ -35,12 +37,17 @@ class App extends Component {
 }
 
 export const mapStateToProps = state => {
-  return { movies: state.movies, isLoading: state.isLoading };
+  return {
+    movies: state.movies,
+    isLoading: state.isLoading,
+    error: state.error
+  };
 };
 
 export const mapDispatchToProps = dispatch => ({
   handleFetch: movies => dispatch(loadMovies(movies)),
-  endLoading: () => dispatch(loadComplete())
+  endLoading: () => dispatch(loadComplete()),
+  hasErrored: errorMsg => dispatch(hasErrored(errorMsg))
 });
 
 export default connect(
