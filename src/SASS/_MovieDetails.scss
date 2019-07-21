@@ -1,7 +1,18 @@
+.movie-details-display {
+  display: flex;
+}
+
 .movie-details {
-  width: 800px;
+  width: 90vw;
   height: 400px;
   margin: auto;
-  background-color: grey;
   color: white;
+}
+
+.details {
+  margin: 2vw;
+}
+
+.details-img {
+  width: 50%;
 }
