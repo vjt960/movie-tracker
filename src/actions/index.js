@@ -7,6 +7,11 @@ export const loadComplete = () => ({
   type: 'LOAD_COMPLETE'
 });
 
+export const hasErrored = errorMessage => ({
+  type: 'HAS_ERRORED',
+  errorMessage
+});
+
 export const signIn = user => ({
   type: 'SIGN_IN',
   user
@@ -21,8 +26,10 @@ export const createAcct = (user) => ({
   user
 });
 
-export const addFavorite = () => ({
-  type: 'ADD_FAVORITE'
+
+export const addFavorite = id => ({
+    type: 'ADD_FAVORITE',
+    id
 });
 
 export const viewFavorites = () => ({
@@ -32,3 +39,15 @@ export const viewFavorites = () => ({
 export const deleteFavorite = () => ({
     type: 'DELETE_FAVORITES'
 });
+
+export const setHover = id => ({
+  type: 'SET_HOVER',
+  id
+});
+
+export const cancelHover = id => ({
+  type: 'CANCEL_HOVER',
+  id
+});
+
+

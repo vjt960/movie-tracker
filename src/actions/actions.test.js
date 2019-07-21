@@ -58,6 +58,19 @@ describe('actions', () => {
       const result = actions.loadComplete();
 
       expect(result).toEqual(expectedAction)
+  });
+
+  it('should have a type of HAS_ERRORED', () => {
+    const errorMessage = 'Error loading';
+
+    const expectedAction = {
+      type: 'HAS_ERRORED',
+      errorMessage
+    };
+
+    const result = actions.hasErrored(errorMessage)
+
+    expect(result).toEqual(expectedAction)
   })
 
   it('should have a type of SIGN_IN', () => {
