@@ -1,5 +1,6 @@
 .movie-details-display {
   display: flex;
+  max-height: 40vh;
 }
 
 .movie-details {
@@ -15,9 +16,13 @@
 .details {
   margin: 1.3vw;
   text-align: center;
+  font-size: 1.8vw;
 }
 
 .details-img {
-  height: 45vh;
-  width: auto;
+  width: 50vw;
+  max-height: 250px;
+  box-shadow: 0px 0px 8px #fff;
+  border-radius: 10%;
+  margin: auto;
 }
