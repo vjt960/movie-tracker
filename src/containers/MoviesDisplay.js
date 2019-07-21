@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {addFavorite, viewFavorites, deleteFavorite } from '../actions'
+import { addNewFavorite } from '../utilz/apiCalls'
 import MoviePoster from '../components/MoviePoster';
 
 const MoviesDisplay = ({ movies }) => {

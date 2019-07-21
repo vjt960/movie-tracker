@@ -45,4 +45,29 @@ export const postNewUser = async (name, email, password) => {
     throw Error('Error creating user')
   }
 
+  export const addNewFavorite = async (movieId, userId, title, posterPath, releaseDate, voteAverage, overview) => {
+    try {
+      const options = {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: {
+          movie_id: movieId,
+          user_id: userId,
+          title: title,
+          posterPath: poster_path,
+          releaseDate: release_date,
+          voteAverage: vote_Average,
+          overview: overview
+         }
+      }
+      const url = 'http://localhost:3000/api/users/favorites/new'
+      const getFavorites = await fetch(url, options)
+      const response = await getFavorites.json()
+      console.log(response.id)
+
+    } catch(error) {
+      throw Error('Error adding favorite')
+    }
+  }
+
 };
