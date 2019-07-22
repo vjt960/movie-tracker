@@ -30,7 +30,7 @@ class MoviePoster extends React.Component {
     return (
       <article className="movie-poster">
         <img
-          src={`https://image.tmdb.org/t/p/w500/${this.props.posterPath}`}
+          src={`https://image.tmdb.org/t/p/w1280/${this.props.posterPath}`}
           alt={`${this.props.title}-poster`}
           className="poster-img"
           id={`${this.props.id}`}
