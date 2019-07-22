@@ -22,15 +22,15 @@
 }
 
 .favorite-icon {
-  height: 25px;
-  width: 25px;
-  margin: 5px;
-  background-image: url('../images/001-heart.svg');
   background-color: transparent;
-  background-repeat: no-repeat;
+  background-image: url('../images/001-heart.svg');
   background-position: 50% 50%;
+  background-repeat: no-repeat;
   border: none;
+  height: 25px;
+  margin: 5px;
   outline: none;
+  width: 25px;
   
   &:hover {
     cursor: pointer;
