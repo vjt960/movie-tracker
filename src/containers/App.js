@@ -6,6 +6,7 @@ import { Route } from 'react-router-dom';
 import LoginForm from './LoginForm';
 import MoviesDisplay from './MoviesDisplay';
 import SignUpForm from './SignUpForm';
+import Favorites from '../components/Favorites';
 import Header from './Header';
 
 class App extends Component {
@@ -44,7 +45,7 @@ class App extends Component {
             )
           }
         />
-        <Route exact path="/all-favorites" render={() => <MoviesDisplay movies={this.props.favorites}/> } />
+        <Route exact path="/favorites" render={() => <Favorites /> } />
       </main>
     );
   }
