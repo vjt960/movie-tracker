@@ -1,7 +1,12 @@
 import React from 'react';
-import { addFavorite } from '../actions';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { loadFavorites } from '../actions';
+import {
+  postFavorite,
+  removeFavorite,
+  fetchFavorites
+} from '../utilz/apiCalls';
 
 class MoviePoster extends React.Component {
   constructor() {
