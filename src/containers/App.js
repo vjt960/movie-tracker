@@ -10,11 +10,11 @@ import Header from './Header';
 
 class App extends Component {
   componentDidMount = () => {
-    const { handleFetch, endLoading, hasErrored } = this.props;
+    const { loadMovies, endLoading, hasErrored } = this.props;
     try {
       fetchMovieData()
         .then(data => data)
-        .then(movies => handleFetch(movies))
+        .then(movies => loadMovies(movies))
         .then(() => endLoading())
         .catch(error => hasErrored(error.message));
     } catch ({ message }) {
@@ -58,7 +58,7 @@ export const mapStateToProps = state => {
 };
 
 export const mapDispatchToProps = dispatch => ({
-  handleFetch: movies => dispatch(loadMovies(movies)),
+  loadMovies: movies => dispatch(loadMovies(movies)),
   endLoading: () => dispatch(loadComplete()),
   hasErrored: errorMsg => dispatch(hasErrored(errorMsg))
 });

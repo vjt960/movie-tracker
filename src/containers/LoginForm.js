@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchUser } from '../utilz/apiCalls';
-import { signIn, hasErrored } from '../actions';
+import { fetchUser, fetchFavorites } from '../utilz/apiCalls';
+import { signIn, hasErrored, loadFavorites } from '../actions';
 import { withRouter } from 'react-router-dom';
 
 class LoginForm extends Component {
@@ -25,13 +25,15 @@ class LoginForm extends Component {
     try {
       let user = await fetchUser(email, password);
       this.props.signIn(user);
+      let favorites = await fetchFavorites(user.id);
+      this.props.loadFavorites(favorites);
       this.props.history.push('/');
       this.props.hasErrored('');
     } catch ({ message }) {
       this.props.hasErrored(message);
       this.props.history.push('/login');
+      this.clearInputs();
     }
-    this.clearInputs();
   };
 
   clearInputs = () => {
@@ -81,7 +83,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   signIn: user => dispatch(signIn(user)),
-  hasErrored: errorMessage => dispatch(hasErrored(errorMessage))
+  hasErrored: errorMessage => dispatch(hasErrored(errorMessage)),
+  loadFavorites: movies => dispatch(loadFavorites(movies))
 });
 
 export default withRouter(

@@ -22,7 +22,23 @@
 }
 
 .favorite-icon {
-  // align-self: flex-end;
   height: 25px;
+  width: 25px;
   margin: 5px;
+  background-image: url('../images/001-heart.svg');
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  border: none;
+  outline: none;
+  
+  &:hover {
+    cursor: pointer;
+  }
+
+  & span {
+    display: none;
+  }
+
 }
+    
