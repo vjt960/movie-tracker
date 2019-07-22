@@ -10,8 +10,8 @@
 .poster-img {
   border-radius: 10%;
   box-shadow: 0px 0px 8px #fff;
-  height: 175px;
-  width: 125px;
+  height: 225px;
+  width: 150px;
 }
 
 
@@ -24,16 +24,16 @@
 .favorite-icon {
   height: 25px;
   width: 25px;
-  margin: 5px;
-  background-image: url('../images/001-heart.svg');
-  background-color: transparent;
+  // margin: 5px;
+  // background-image: url('../images/001-heart.svg');
+  background-color: rgb(248, 243, 197);
   background-repeat: no-repeat;
-  background-position: 50% 50%;
-  border: none;
+  // background-position: 50% 50%;
+  border-radius: 50%;
   outline: none;
   position: relative;
-  bottom: 35px;
-  left: 130px;
+  top: 26px;
+  left: 228px;
   
   &:hover {
     cursor: pointer;
