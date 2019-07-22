@@ -11,6 +11,10 @@ const Header = props => {
       <h1>MOVIE-TRACKER</h1>
       <p className="header-greeting">{greeting}</p>
       <div className="header-btns-container">
+        <NavLink to="/" className="home-btn" activeClassName="active">
+          Home
+        </NavLink>
+        <Link to="/favorites" className="favorites-btn">Favorites</Link>
         <NavLink
           to="/login"
           className="sign-in-btn"
@@ -19,10 +23,6 @@ const Header = props => {
         >
           {signInOut}
         </NavLink>
-        <NavLink to="/" className="home-btn" activeClassName="active">
-          Home
-        </NavLink>
-        <Link to="/favorites" className="favorites-btn">View Favorites</Link>
       </div>
     </header>
   );
