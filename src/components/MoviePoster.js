@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter, NavLink } from 'react-router-dom';
 import { loadFavorites } from '../actions';
+import inactiveFave from '../images/012-hollywood-star.svg';
+import activeFave from '../images/011-cinema.svg';
 import {
   postFavorite,
   removeFavorite,
@@ -40,8 +42,10 @@ class MoviePoster extends React.Component {
     const favoriteIDs = favorites.map(movie => movie.movie_id);
     if (!favoriteIDs.includes(movieID)) {
       this.addFavorite(userID);
+      this.setState({ isFavored: true})
     } else {
       this.deleteFavorite(userID, movieID);
+      this.setState({ isFavored: false})
     }
   }
 
@@ -62,21 +66,17 @@ class MoviePoster extends React.Component {
   render() {
     const { movie } = this.props;
     return (
-      <article className="movie-poster">
-        <NavLink to={`/movies/${movie.movie_id}`} className='movie-showcase-link'>
-          <img
-            src={`https://image.tmdb.org/t/p/w1280/${movie.poster_path}`}
-            alt={`${movie.title}-poster`}
-            className="poster-img"
-            id={`${movie.movie_id}`}
-            onMouseEnter={e => this.setHover(e)}
-            onMouseLeave={() => this.cancelFocus()}
-          />
-        </NavLink>
+      <article className="movie-poster" >
+        <img src={this.state.isFavored ? activeFave : inactiveFave} className="favorite-icon" onClick={e => this.handleFavorite(e)} />
+        <img
+          src={`https://image.tmdb.org/t/p/w1280/${movie.poster_path}`}
+          alt={`${movie.title}-poster`}
+          className="poster-img"
+          id={`${movie.movie_id}`}
+          onMouseEnter={e => this.setHover(e)}
+          onMouseLeave={() => this.cancelFocus()}
+        />
         <p className="poster-title">{movie.title}</p>
-        <button className="favorite-icon" onClick={e => this.handleFavorite(e)}>
-          <span>Favorite</span>
-        </button>
       </article>
     );
   }

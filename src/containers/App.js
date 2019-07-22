@@ -3,9 +3,11 @@ import { loadMovies, loadComplete, hasErrored } from '../actions';
 import { fetchMovieData } from '../utilz/apiCalls';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
+import loadingGif from '../images/loading.gif'
 import LoginForm from './LoginForm';
 import MoviesDisplay from './MoviesDisplay';
 import SignUpForm from './SignUpForm';
+import Favorites from '../components/Favorites';
 import Header from './Header';
 import MovieShowcase from '../components/MovieShowcase';
 
@@ -25,9 +27,11 @@ class App extends Component {
 
   render() {
     const { isLoading, error } = this.props;
-    const loadingGif =
-      'https://cdn.dribbble.com/users/1522421/screenshots/3558724/moviespopcornsoda_5.gif';
-
+    const loading = (
+      <section className = 'loading-gif-container'>
+        <img src={loadingGif} alt="loading-gif" className="loading-gif" />
+      </section>
+    )
     return (
       <main className="app">
         <Header />
@@ -36,7 +40,7 @@ class App extends Component {
         <Route exact path="/signup" render={() => <SignUpForm />} />
         <Route exact path="/" render={() => !isLoading ? 
           (<MoviesDisplay />) : 
-          (<img src={loadingGif} alt="popcorn loading gif" />)}
+          loading}
         />
         <Route path='/movies/:id' render={({ match }) => {
           const { id } = match.params;
@@ -45,6 +49,7 @@ class App extends Component {
           return movie && <MovieShowcase movie={movie} />
         }}
         />
+        <Route exact path="/favorites" render={() => <Favorites /> } />
       </main>
     );
   }
@@ -54,7 +59,8 @@ export const mapStateToProps = state => {
   return {
     movies: state.movies,
     isLoading: state.isLoading,
-    error: state.error
+    error: state.error,
+    favorites: state.favorites
   };
 };
 

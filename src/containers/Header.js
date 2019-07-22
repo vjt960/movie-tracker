@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signOut, clearFavorites, clearError } from '../actions';
 
@@ -33,6 +33,7 @@ const Header = props => {
         >
           Home
         </NavLink>
+        <Link to="/favorites" className="favorites-btn">View Favorites</Link>
       </div>
     </header>
   );
