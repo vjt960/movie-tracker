@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import MoviePoster from '../components/MoviePoster';
-import MoviesDetailDisplay from '../components/movieDetailsDisplay';
-import { focusMovie, cancelFocus } from '../actions';
+import MoviePoster from '../../components/MoviePoster/MoviePoster';
+import MoviesDetailDisplay from '../../components/movieDetailsDisplay/movieDetailsDisplay';
+import { focusMovie, cancelFocus } from '../../actions';
 
 const MoviesDisplay = ({
   movies,

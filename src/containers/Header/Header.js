@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { signOut, clearFavorites, clearError } from '../actions';
+import { signOut, clearFavorites, clearError } from '../../actions';
 
 const Header = props => {
   const signInOut = props.user.loggedIn ? 'Sign-out' : 'Sign-in';

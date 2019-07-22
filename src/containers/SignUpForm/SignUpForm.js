@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchUser, fetchFavorites } from '../utilz/apiCalls';
-import { signIn, hasErrored, clearError, loadFavorites } from '../actions';
+import { postNewUser } from '../../utilz/apiCalls';
+import { signIn, hasErrored, clearError } from '../../actions';
+import { fetchUser } from '../../utilz/apiCalls';
 import { withRouter } from 'react-router-dom';
 
-class LoginForm extends Component {
+class SignUpForm extends Component {
   constructor() {
     super();
     this.state = {
+      name: '',
       email: '',
       password: ''
     };
   }
 
   handleChange = e => {
-    e.preventDefault();
     this.setState({ [e.target.name]: e.target.value });
   };
 
@@ -34,28 +34,36 @@ class LoginForm extends Component {
 
   handleSubmit = async e => {
     e.preventDefault();
-    const { email, password } = this.state;
+    const { name, email, password } = this.state;
+    const cleanEmail = this.handleEmail(email);
     try {
-      let user = await fetchUser(this.handleEmail(email), password);
-      this.props.signIn(user);
-      let favorites = await fetchFavorites(user.id);
-      this.props.loadFavorites(favorites);
+      await postNewUser(name, cleanEmail, password);
+      let newUser = await fetchUser(cleanEmail, password);
+      this.props.signIn(newUser);
       this.props.history.push('/');
       this.props.clearError();
     } catch ({ message }) {
       this.props.hasErrored(message);
-      this.props.history.push('/login');
-      this.clearInputs();
+      this.props.history.push('/signup');
     }
+    this.clearInputs();
   };
 
   clearInputs = () => {
-    this.setState({ email: '', password: '' });
+    this.setState({ name: '', email: '', password: '' });
   };
 
   render() {
     return (
       <form className="login-form">
+        <input
+          type="text"
+          name="name"
+          className="login-input"
+          placeholder="Name..."
+          onChange={this.handleChange}
+          value={this.state.name}
+        />
         <input
           type="email"
           name="email"
@@ -76,13 +84,8 @@ class LoginForm extends Component {
           className="login-input login-btn"
           onClick={e => this.handleSubmit(e)}
         >
-          Sign-In
+          Create Your Account
         </button>
-        <NavLink to="/signup" className="login-create-acct-btn">
-          <p className="login-create-acct">
-            Don't have an account? Create one now!
-          </p>
-        </NavLink>
       </form>
     );
   }
@@ -96,13 +99,12 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   signIn: user => dispatch(signIn(user)),
   hasErrored: errorMessage => dispatch(hasErrored(errorMessage)),
-  clearError: () => dispatch(clearError()),
-  loadFavorites: movies => dispatch(loadFavorites(movies))
+  clearError: () => dispatch(clearError())
 });
 
 export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(LoginForm)
+  )(SignUpForm)
 );
