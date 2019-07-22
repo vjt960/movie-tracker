@@ -21,23 +21,22 @@ export const signOut = () => ({
   type: 'SIGN_OUT'
 });
 
-export const createAcct = (user) => ({
+export const createAcct = user => ({
   type: 'CREATE_ACCT',
   user
 });
 
-
-export const addFavorite = fave => ({
-    type: 'ADD_FAVORITE',
-    fave
+export const addFavorite = movie => ({
+  type: 'ADD_FAVORITE',
+  movie
 });
 
 export const viewFavorites = () => ({
-    type: 'VIEW_FAVORITES'
+  type: 'VIEW_FAVORITES'
 });
 
 export const deleteFavorite = () => ({
-    type: 'DELETE_FAVORITES'
+  type: 'DELETE_FAVORITES'
 });
 
 export const focusMovie = movie => ({
@@ -46,7 +45,5 @@ export const focusMovie = movie => ({
 });
 
 export const cancelFocus = () => ({
-  type: 'CANCEL_FOCUS',
+  type: 'CANCEL_FOCUS'
 });
-
-
