@@ -81,13 +81,12 @@ class MoviePoster extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  targetMovie: id => state.movies.find(movie => movie.id === id),
   favorites: state.favorites,
   user: state.user
 });
 
 const mapDispatchToProps = dispatch => ({
-  addFavorite: movie => dispatch(addFavorite(movie))
+  loadFavorites: movies => dispatch(loadFavorites(movies))
 });
 
 export default withRouter(
