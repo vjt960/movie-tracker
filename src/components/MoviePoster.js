@@ -66,8 +66,8 @@ class MoviePoster extends React.Component {
   render() {
     const { movie } = this.props;
     return (
-      <article className="movie-poster">
-        <img src={this.state.isFavored ? activeFave : inactiveFave} className="favorite-icon" onClick={e => this.handleFavorite(e)}/>
+      <article className="movie-poster" >
+        <img src={this.state.isFavored ? activeFave : inactiveFave} className="favorite-icon" onClick={e => this.handleFavorite(e)} />
         <img
           src={`https://image.tmdb.org/t/p/w1280/${movie.poster_path}`}
           alt={`${movie.title}-poster`}
