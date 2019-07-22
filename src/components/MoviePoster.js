@@ -19,7 +19,8 @@ class MoviePoster extends React.Component {
     this.props.cancelFocus();
   };
 
-  handleFavorite = () => {
+  handleFavorite = event => {
+    event.preventDefault();
     if (this.props.user) {
       this.toggleFavorite(this.props.user.id);
     } else {
@@ -69,10 +70,7 @@ class MoviePoster extends React.Component {
           onMouseLeave={() => this.cancelFocus()}
         />
         <p className="poster-title">{this.props.title}</p>
-        <button
-          className="favorite-icon"
-          onClick={() => console.log('click fave')}
-        >
+        <button className="favorite-icon" onClick={e => this.handleFavorite(e)}>
           <span>favorite</span>
         </button>
       </article>
