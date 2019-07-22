@@ -1,6 +1,7 @@
 import React from 'react';
 import { addFavorite } from '../actions';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 class MoviePoster extends React.Component {
   constructor() {
@@ -88,7 +89,9 @@ const mapDispatchToProps = dispatch => ({
   addFavorite: movie => dispatch(addFavorite(movie))
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(MoviePoster);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(MoviePoster)
+);
