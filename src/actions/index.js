@@ -26,17 +26,9 @@ export const createAcct = user => ({
   user
 });
 
-export const addFavorite = movie => ({
-  type: 'ADD_FAVORITE',
-  movie
-});
-
-export const viewFavorites = () => ({
-  type: 'VIEW_FAVORITES'
-});
-
-export const deleteFavorite = () => ({
-  type: 'DELETE_FAVORITES'
+export const loadFavorites = movies => ({
+  type: 'LOAD_FAVORITES',
+  movies
 });
 
 export const focusMovie = movie => ({
