@@ -12,7 +12,7 @@ const MovieShowcase = (props) => {
         <section className='movie-showcase-details'>
           <h3><span className='title'>{props.movie.title}</span></h3>
           <p className='movie-showcase-overview'>{props.movie.overview}</p>
-          <p><span className='bold'>Rating:</span>  {props.movie.vote_average}/10</p>
+          <p class='movie-showcase-vote-avg'><span className='bold'>Rating:</span>  {props.movie.vote_average}/10</p>
           <p><span className='bold'>Released:</span>  {props.movie.release_date}</p>
       </section>
     </main>

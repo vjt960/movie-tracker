@@ -67,15 +67,17 @@ class MoviePoster extends React.Component {
     const { movie } = this.props;
     return (
       <article className="movie-poster" >
-        <img src={this.state.isFavored ? activeFave : inactiveFave} className="favorite-icon" onClick={e => this.handleFavorite(e)} />
-        <img
-          src={`https://image.tmdb.org/t/p/w1280/${movie.poster_path}`}
-          alt={`${movie.title}-poster`}
-          className="poster-img"
-          id={`${movie.movie_id}`}
-          onMouseEnter={e => this.setHover(e)}
-          onMouseLeave={() => this.cancelFocus()}
-        />
+        <img src={this.state.isFavored ? activeFave : inactiveFave} className="favorite-icon" alt='fav-icon' onClick={e => this.handleFavorite(e)} />
+        <NavLink to={`/movies/${movie.movie_id}`} className='movie-showcase-link'>
+          <img
+            src={`https://image.tmdb.org/t/p/w1280/${movie.poster_path}`}
+            alt={`${movie.title}-poster`}
+            className="poster-img"
+            id={`${movie.movie_id}`}
+            onMouseEnter={e => this.setHover(e)}
+            onMouseLeave={() => this.cancelFocus()}
+          />
+        </NavLink>
         <p className="poster-title">{movie.title}</p>
       </article>
     );
