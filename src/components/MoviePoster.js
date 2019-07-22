@@ -1,24 +1,23 @@
 import React from 'react';
-// import { connect } from 'react-redux'
-// import { addNewFavorite } from '../utilz/apiCalls'
-// import { addFavorite, viewFavorites, deleteFavorite } from '../actions'
-import activeFavIcon from '../images/001-heart.svg';
-// import { statements } from '@babel/template';
-// import { compose } from '../../../../../Library/Caches/typescript/3.4.3/node_modules/redux';
-// import inactiveFavIcon from '../images/002-heart-1.svg'
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { loadFavorites } from '../actions';
+import {
+  postFavorite,
+  removeFavorite,
+  fetchFavorites
+} from '../utilz/apiCalls';
 
 class MoviePoster extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       isFavored: false
-      // currentHover: false
     };
   }
 
   setHover = e => {
     e.preventDefault();
-    // this.setState({ currentHover: !this.state.currentHover });
     this.props.findMovie(parseInt(e.target.id));
   };
 
@@ -26,26 +25,73 @@ class MoviePoster extends React.Component {
     this.props.cancelFocus();
   };
 
+  handleFavorite = event => {
+    event.preventDefault();
+    const { user, movie, history } = this.props;
+    if (user.id) {
+      this.toggleFavorite(user.id, movie.movie_id);
+    } else {
+      history.push('/login');
+    }
+  };
+
+  toggleFavorite(userID, movieID) {
+    const { favorites } = this.props;
+    const favoriteIDs = favorites.map(movie => movie.movie_id);
+    if (!favoriteIDs.includes(movieID)) {
+      this.addFavorite(userID);
+    } else {
+      this.deleteFavorite(userID, movieID);
+    }
+  }
+
+  addFavorite = userID => {
+    const { movie } = this.props;
+    postFavorite(userID, movie).then(() =>
+      fetchFavorites(userID).then(movies => this.props.loadFavorites(movies))
+    );
+  };
+
+  deleteFavorite = (userID, movieID) => {
+    console.log('deleteFavorite firing...');
+    removeFavorite(userID, movieID).then(() =>
+      fetchFavorites(userID).then(movies => this.props.loadFavorites(movies))
+    );
+  };
+
   render() {
+    const { movie } = this.props;
     return (
       <article className="movie-poster">
         <img
-          src={`https://image.tmdb.org/t/p/w500/${this.props.posterPath}`}
-          alt={`${this.props.title}-poster`}
+          src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+          alt={`${movie.title}-poster`}
           className="poster-img"
-          id={`${this.props.id}`}
+          id={`${movie.movie_id}`}
           onMouseEnter={e => this.setHover(e)}
           onMouseLeave={() => this.cancelFocus()}
         />
-        <p className="poster-title">{this.props.title}</p>
-        <img
-          src={activeFavIcon}
-          className="favorite-icon"
-          alt="favorite-icon"
-        />
+        <p className="poster-title">{movie.title}</p>
+        <button className="favorite-icon" onClick={e => this.handleFavorite(e)}>
+          <span>Favorite</span>
+        </button>
       </article>
     );
   }
 }
 
-export default MoviePoster;
+const mapStateToProps = state => ({
+  favorites: state.favorites,
+  user: state.user
+});
+
+const mapDispatchToProps = dispatch => ({
+  loadFavorites: movies => dispatch(loadFavorites(movies))
+});
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(MoviePoster)
+);
