@@ -6,6 +6,11 @@ import { signOut, clearError } from '../actions';
 const Header = props => {
   const signInOut = props.user.loggedIn ? 'Sign-out' : 'Sign-in';
   const greeting = props.user.loggedIn ? `Hello, ${props.user.name}!` : '';
+
+  const logoutUser = () => {
+    props.signOut();
+  };
+
   return (
     <header>
       <h1>MOVIE-TRACKER</h1>
@@ -15,7 +20,7 @@ const Header = props => {
           to="/login"
           className="sign-in-btn"
           activeClassName="active"
-          onClick={props.user.loggedIn ? props.signOutUser : null}
+          onClick={props.user.loggedIn ? logoutUser : null}
         >
           {signInOut}
         </NavLink>
@@ -37,7 +42,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  signOutUser: () => dispatch(signOut()),
+  signOut: () => dispatch(signOut()),
   clearError: () => dispatch(clearError())
 });
 
