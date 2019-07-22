@@ -26,26 +26,16 @@ class App extends Component {
   render() {
     const { isLoading, error } = this.props;
     const loadingGif =
-      'https://cdn.dribbble.com/users/1522421/screenshots/3558724/moviespopcornsoda_5.gif';
-
+      'https://i.pinimg.com/originals/ec/d6/bc/ecd6bc09da634e4e2efa16b571618a22.gif';
     return (
       <main className="app">
         <Header />
         <h2 className="error">{error}</h2>
+        {isLoading && loadingGif}
         <Route exact path="/login" render={() => <LoginForm />} />
         <Route exact path="/signup" render={() => <SignUpForm />} />
-        <Route
-          exact
-          path="/"
-          render={() =>
-            !isLoading ? (
-              <MoviesDisplay />
-            ) : (
-              <img src={loadingGif} alt="popcorn loading gif" />
-            )
-          }
-        />
-        <Route exact path="/favorites" render={() => <Favorites /> } />
+        <Route exact path="/" render={() => <MoviesDisplay />} />
+        <Route exact path="/favorites" render={() => <Favorites />} />
       </main>
     );
   }
