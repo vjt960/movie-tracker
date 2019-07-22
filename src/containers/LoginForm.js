@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchUser, fetchFavorites } from '../utilz/apiCalls';
-import { signIn, hasErrored, loadFavorites } from '../actions';
+import { signIn, hasErrored, clearError, loadFavorites } from '../actions';
 import { withRouter } from 'react-router-dom';
 
 class LoginForm extends Component {
@@ -28,7 +28,7 @@ class LoginForm extends Component {
       let favorites = await fetchFavorites(user.id);
       this.props.loadFavorites(favorites);
       this.props.history.push('/');
-      this.props.hasErrored('');
+      this.props.clearError();
     } catch ({ message }) {
       this.props.hasErrored(message);
       this.props.history.push('/login');
@@ -43,7 +43,6 @@ class LoginForm extends Component {
   render() {
     return (
       <form className="login-form">
-        <legend className="error">{this.props.error}</legend>
         <input
           type="email"
           name="email"
@@ -84,6 +83,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   signIn: user => dispatch(signIn(user)),
   hasErrored: errorMessage => dispatch(hasErrored(errorMessage)),
+  clearError: () => dispatch(clearError()),
   loadFavorites: movies => dispatch(loadFavorites(movies))
 });
 
