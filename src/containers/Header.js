@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { signOut, clearError } from '../actions';
+import { signOut, clearFavorites, clearError } from '../actions';
 
 const Header = props => {
   const signInOut = props.user.loggedIn ? 'Sign-out' : 'Sign-in';
@@ -9,6 +9,7 @@ const Header = props => {
 
   const logoutUser = () => {
     props.signOut();
+    props.clearFavorites();
   };
 
   return (
@@ -43,6 +44,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   signOut: () => dispatch(signOut()),
+  clearFavorites: () => dispatch(clearFavorites()),
   clearError: () => dispatch(clearError())
 });
 
