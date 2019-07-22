@@ -31,6 +31,9 @@
   background-position: 50% 50%;
   border: none;
   outline: none;
+  position: relative;
+  bottom: 35px;
+  left: 130px;
   
   &:hover {
     cursor: pointer;
