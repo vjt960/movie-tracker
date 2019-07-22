@@ -22,10 +22,11 @@ class MoviePoster extends React.Component {
 
   handleFavorite = event => {
     event.preventDefault();
-    if (this.props.user) {
-      this.toggleFavorite(this.props.user.id);
+    const { user, id, history } = this.props;
+    if (user.id) {
+      this.toggleFavorite(user.id, id);
     } else {
-      //prompt user login form
+      history.push('/login');
     }
   };
 
