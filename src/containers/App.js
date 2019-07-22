@@ -7,6 +7,7 @@ import LoginForm from './LoginForm';
 import MoviesDisplay from './MoviesDisplay';
 import SignUpForm from './SignUpForm';
 import Header from './Header';
+import MovieShowcase from '../components/MovieShowcase';
 
 class App extends Component {
   componentDidMount = () => {
@@ -33,16 +34,16 @@ class App extends Component {
         <h2 className="error">{error}</h2>
         <Route exact path="/login" render={() => <LoginForm />} />
         <Route exact path="/signup" render={() => <SignUpForm />} />
-        <Route
-          exact
-          path="/"
-          render={() =>
-            !isLoading ? (
-              <MoviesDisplay />
-            ) : (
-              <img src={loadingGif} alt="popcorn loading gif" />
-            )
-          }
+        <Route exact path="/" render={() => !isLoading ? 
+          (<MoviesDisplay />) : 
+          (<img src={loadingGif} alt="popcorn loading gif" />)}
+        />
+        <Route path='/movies/:id' render={({ match }) => {
+          const { id } = match.params;
+          console.log(id)
+          const movie = movies.find(movie => movie.movie_id === id);
+          return movie && <MovieShowcase {...movie} />
+        }}
         />
       </main>
     );
