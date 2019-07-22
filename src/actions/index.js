@@ -25,6 +25,10 @@ export const signOut = () => ({
   type: 'SIGN_OUT'
 });
 
+export const clearFavorites = () => ({
+  type: 'CLEAR_FAVORITES'
+});
+
 export const createAcct = user => ({
   type: 'CREATE_ACCT',
   user
