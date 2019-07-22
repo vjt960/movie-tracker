@@ -10,22 +10,16 @@ const MovieDetailsDisplay = ({ foundMovie }) => {
           className="details-img"
         />
       )}
-      <article>
+      <article className='movie-details-overview'>
         {foundMovie && (
-          <h2 className="details details-title">{foundMovie.title}</h2>
+          <h2 className="details details-title">
+            <span className='title'>
+              {foundMovie.title}
+            </span>
+          </h2>
         )}
         {foundMovie && (
           <p className="details details-overview">{foundMovie.overview}</p>
-        )}
-        {foundMovie.vote_average && (
-          <p className="details details-vote-average">
-            Average Rating: {foundMovie.vote_average}/10
-          </p>
-        )}
-        {foundMovie.release_date && (
-          <p className="details details-release-date">
-            Release Date: {foundMovie.release_date}
-          </p>
         )}
       </article>
     </section>
