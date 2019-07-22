@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, NavLink } from 'react-router-dom';
 import { loadFavorites } from '../actions';
 import {
   postFavorite,
@@ -63,14 +63,16 @@ class MoviePoster extends React.Component {
     const { movie } = this.props;
     return (
       <article className="movie-poster">
-        <img
-          src={`https://image.tmdb.org/t/p/w1280/${movie.poster_path}`}
-          alt={`${movie.title}-poster`}
-          className="poster-img"
-          id={`${movie.movie_id}`}
-          onMouseEnter={e => this.setHover(e)}
-          onMouseLeave={() => this.cancelFocus()}
-        />
+        <NavLink to={`/movies/${movie.movie_id}`} className='movie-showcase-link'>
+          <img
+            src={`https://image.tmdb.org/t/p/w1280/${movie.poster_path}`}
+            alt={`${movie.title}-poster`}
+            className="poster-img"
+            id={`${movie.movie_id}`}
+            onMouseEnter={e => this.setHover(e)}
+            onMouseLeave={() => this.cancelFocus()}
+          />
+        </NavLink>
         <p className="poster-title">{movie.title}</p>
         <button className="favorite-icon" onClick={e => this.handleFavorite(e)}>
           <span>Favorite</span>

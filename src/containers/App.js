@@ -41,7 +41,8 @@ class App extends Component {
         <Route path='/movies/:id' render={({ match }) => {
           const { id } = match.params;
           console.log(id)
-          const movie = movies.find(movie => movie.movie_id === id);
+          const movie = this.props.movies.find(movie => movie.movie_id == id);
+          console.log(movie)
           return movie && <MovieShowcase {...movie} />
         }}
         />
