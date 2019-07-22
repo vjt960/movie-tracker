@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { signOut } from '../actions';
+import { signOut, clearError } from '../actions';
 
 const Header = props => {
   const signInOut = props.user.loggedIn ? 'Sign-out' : 'Sign-in';
@@ -19,7 +19,12 @@ const Header = props => {
         >
           {signInOut}
         </NavLink>
-        <NavLink to="/" className="home-btn" activeClassName="active">
+        <NavLink
+          to="/"
+          className="home-btn"
+          activeClassName="active"
+          onClick={() => props.clearError()}
+        >
           Home
         </NavLink>
       </div>
@@ -32,7 +37,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  signOutUser: () => dispatch(signOut())
+  signOutUser: () => dispatch(signOut()),
+  clearError: () => dispatch(clearError())
 });
 
 export default connect(
