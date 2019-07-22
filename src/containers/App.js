@@ -8,6 +8,7 @@ import MoviesDisplay from './MoviesDisplay';
 import SignUpForm from './SignUpForm';
 import Favorites from '../components/Favorites';
 import Header from './Header';
+import MovieShowcase from '../components/MovieShowcase';
 
 class App extends Component {
   componentDidMount = () => {
@@ -35,7 +36,14 @@ class App extends Component {
         <Route exact path="/login" render={() => <LoginForm />} />
         <Route exact path="/signup" render={() => <SignUpForm />} />
         <Route exact path="/" render={() => <MoviesDisplay />} />
-        <Route exact path="/favorites" render={() => <Favorites />} />
+        <Route path='/movies/:id' render={({ match }) => {
+          const { id } = match.params;
+          const movie = this.props.movies.find(movie => movie.movie_id === parseInt(id));
+          console.log(movie)
+          return movie && <MovieShowcase movie={movie} />
+        }}
+        />
+        <Route exact path="/favorites" render={() => <Favorites /> } />
       </main>
     );
   }
