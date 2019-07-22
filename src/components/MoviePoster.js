@@ -30,6 +30,16 @@ class MoviePoster extends React.Component {
     }
   };
 
+  toggleFavorite(userID, movieID) {
+    const { favorites } = this.props;
+    const favoriteIDs = favorites.map(movie => movie.id);
+    if (!favoriteIDs.includes(movieID)) {
+      this.addFavorite(userID);
+    } else {
+      this.deleteFavorite(userID, movieID);
+    }
+  }
+
   addFavorite = userID => {
     const {
       id,
@@ -58,6 +68,10 @@ class MoviePoster extends React.Component {
     fetch(url, options)
       .then(movieID => targetMovie(movieID))
       .then(movie => addFavorite(movie));
+  };
+
+  deleteFavorite = () => {
+    //
   };
 
   render() {
