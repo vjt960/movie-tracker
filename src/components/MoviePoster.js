@@ -46,53 +46,34 @@ class MoviePoster extends React.Component {
   }
 
   addFavorite = userID => {
-    const {
-      id,
-      title,
-      posterPath,
-      releaseDate,
-      voteAvg,
-      overview,
-      targetMovie,
-      addFavorite
-    } = this.props;
-    const url = 'http://localhost:3000//api/users/favorites/new';
-    const options = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        movie_id: id,
-        user_id: userID,
-        title,
-        poster_path: posterPath,
-        release_date: releaseDate,
-        vote_average: voteAvg,
-        overview
-      })
-    };
-    fetch(url, options)
-      .then(movieID => targetMovie(movieID))
-      .then(movie => addFavorite(movie));
+    const { movie } = this.props;
+    postFavorite(userID, movie).then(() =>
+      fetchFavorites(userID).then(movies => this.props.loadFavorites(movies))
+    );
   };
 
-  deleteFavorite = () => {
-    //
+  deleteFavorite = (userID, movieID) => {
+    console.log('deleteFavorite firing...');
+    removeFavorite(userID, movieID).then(() =>
+      fetchFavorites(userID).then(movies => this.props.loadFavorites(movies))
+    );
   };
 
   render() {
+    const { movie } = this.props;
     return (
       <article className="movie-poster">
         <img
-          src={`https://image.tmdb.org/t/p/w500/${this.props.posterPath}`}
-          alt={`${this.props.title}-poster`}
+          src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+          alt={`${movie.title}-poster`}
           className="poster-img"
-          id={`${this.props.id}`}
+          id={`${movie.movie_id}`}
           onMouseEnter={e => this.setHover(e)}
           onMouseLeave={() => this.cancelFocus()}
         />
-        <p className="poster-title">{this.props.title}</p>
+        <p className="poster-title">{movie.title}</p>
         <button className="favorite-icon" onClick={e => this.handleFavorite(e)}>
-          <span>favorite</span>
+          <span>Favorite</span>
         </button>
       </article>
     );
