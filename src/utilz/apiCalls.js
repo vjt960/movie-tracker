@@ -8,11 +8,22 @@ export const fetchMovieData = async () => {
     if (!response.ok) {
       throw new Error('Sorry. Unable to retrieve movies.');
     }
-    const parsedData = await response.json();
-    const movieData = cleanMovieData(parsedData.results);
-    return movieData;
+    const data = await response.json();
+    const movies = cleanMovieData(data.results);
+    return movies;
+  } catch ({ message }) {
+    throw new Error(message);
+  }
+};
+
+export const fetchFavorites = async userID => {
+  const url = `http://localhost:3000/api/users/${userID}/favorites`;
+  try {
+    const response = await fetch(url);
+    const favorites = await response.json();
+    return favorites.data;
   } catch (error) {
-    throw new Error(error.message);
+    return error.message;
   }
 };
 
