@@ -6,6 +6,7 @@ import { Route } from 'react-router-dom';
 import LoginForm from './LoginForm';
 import MoviesDisplay from './MoviesDisplay';
 import SignUpForm from './SignUpForm';
+import Favorites from '../components/Favorites';
 import Header from './Header';
 import MovieShowcase from '../components/MovieShowcase';
 
@@ -45,6 +46,7 @@ class App extends Component {
           return movie && <MovieShowcase movie={movie} />
         }}
         />
+        <Route exact path="/favorites" render={() => <Favorites /> } />
       </main>
     );
   }
@@ -54,7 +56,8 @@ export const mapStateToProps = state => {
   return {
     movies: state.movies,
     isLoading: state.isLoading,
-    error: state.error
+    error: state.error,
+    favorites: state.favorites
   };
 };
 
