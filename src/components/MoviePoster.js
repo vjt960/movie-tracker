@@ -1,4 +1,6 @@
 import React from 'react';
+import { addFavorite } from '../actions';
+import { connect } from 'react-redux';
 
 class MoviePoster extends React.Component {
   constructor() {
@@ -25,14 +27,16 @@ class MoviePoster extends React.Component {
     }
   };
 
-  toggleFavorite = userID => {
+  addFavorite = userID => {
     const {
       id,
       title,
       posterPath,
       releaseDate,
       voteAvg,
-      overview
+      overview,
+      targetMovie,
+      addFavorite
     } = this.props;
     const url = 'http://localhost:3000//api/users/favorites/new';
     const options = {
@@ -48,7 +52,9 @@ class MoviePoster extends React.Component {
         overview
       })
     };
-    fetch(url, options).then(movieID => movieID);
+    fetch(url, options)
+      .then(movieID => targetMovie(movieID))
+      .then(movie => addFavorite(movie));
   };
 
   render() {
@@ -74,8 +80,17 @@ class MoviePoster extends React.Component {
   }
 }
 
-mapDispatchToProps = dispatch => ({
-  //
+const mapStateToProps = state => ({
+  targetMovie: id => state.movies.find(movie => movie.id === id),
+  favorites: state.favorites,
+  user: state.user
 });
 
-export default MoviePoster;
+const mapDispatchToProps = dispatch => ({
+  addFavorite: movie => dispatch(addFavorite(movie))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MoviePoster);
