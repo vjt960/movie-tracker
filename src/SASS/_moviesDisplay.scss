@@ -1,18 +1,18 @@
 .movie-display {
+  background-size: initial;
+  color: white;
   display: flex;
   flex-direction: column;
-  color: white;
   height: fit-content;
-  background-size: initial;
 }
 
 .movies-scroll {
-  display: flex;
-  overflow: scroll;
-  justify-content: space-between;
   align-items: center;
   color: white;
-  padding: 10px;
+  display: flex;
   height: 45vh;
+  justify-content: space-between;
+  overflow: scroll;
+  padding: 10px;
 }
 

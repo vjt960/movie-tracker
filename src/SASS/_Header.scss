@@ -1,45 +1,45 @@
 header {
-  height: 10vh;
   display: grid;
-  grid-template-columns: 70% 15% 15%;
+  grid-template-columns: 30% 40% 15% 15%;
+  height: fit-content;
 }
 
 h1 {
   color: #f1f1f1;
-  width: fit-content;
-  font-size: 50px;
+  font-size: 4vw;
+  grid-column-end: 3;
+  grid-column-start: 2;
+  margin: auto;
   padding: 10px;
-  grid-column-start: 1;
-  grid-column-end: 2;
-  margin-left: auto;
+  width: fit-content;
 }
 
 .header-btns-container {
   display: flex;
-  align-items: center;
-  flex-direction: unset;
-  grid-column-start: 3;
-  grid-column-end: 4;
+  flex-direction: column;
+  grid-column-end: 5;
+  grid-column-start: 4;
+  margin: auto;
 }
 
 .sign-in-btn,
 .home-btn {
-  display: flex;
   align-items: center;
-  justify-content: center;
-  height: 50px;
-  margin: 7px;
   border: 1px solid white;
   color: white;
-  width: 75px;
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  margin: 7px;
   text-decoration: none;
+  width: 75px;
 }
 
 .header-greeting {
-  display: flex;
-  grid-column-start: 2;
-  grid-column-end: 3;
-  justify-content: center;
   align-items: center;
   color: white;
+  display: flex;
+  grid-column-end: 4;
+  grid-column-start: 3;
+  justify-content: center;
 }
