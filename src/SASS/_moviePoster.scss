@@ -14,33 +14,24 @@
   width: 150px;
 }
 
-
-
 .poster-title {
   margin-top: 10px;
   text-align: center;
 }
 
 .favorite-icon {
-  height: 25px;
-  width: 25px;
-  // margin: 5px;
-  // background-image: url('../images/001-heart.svg');
   background-color: rgb(248, 243, 197);
   background-repeat: no-repeat;
-  // background-position: 50% 50%;
   border-radius: 50%;
+  height: 25px;
+  left: 228px;
   outline: none;
   position: relative;
   top: 26px;
-  left: 228px;
+  width: 25px;
   
   &:hover {
     cursor: pointer;
-  }
-
-  & span {
-    display: none;
   }
 
 }

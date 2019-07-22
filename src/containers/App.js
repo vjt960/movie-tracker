@@ -44,6 +44,7 @@ class App extends Component {
             )
           }
         />
+        <Route exact path="/all-favorites" render={() => <MoviesDisplay movies={this.props.favorites}/> } />
       </main>
     );
   }
@@ -53,7 +54,8 @@ export const mapStateToProps = state => {
   return {
     movies: state.movies,
     isLoading: state.isLoading,
-    error: state.error
+    error: state.error,
+    favorites: state.favorites
   };
 };
 
