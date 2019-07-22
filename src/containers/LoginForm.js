@@ -19,11 +19,24 @@ class LoginForm extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  handleEmail = email => {
+    return email
+      .split('')
+      .map(char => {
+        if (char !== '@' && char !== '.') {
+          return char.toLowerCase();
+        } else {
+          return char;
+        }
+      })
+      .join('');
+  };
+
   handleSubmit = async e => {
     e.preventDefault();
     const { email, password } = this.state;
     try {
-      let user = await fetchUser(email, password);
+      let user = await fetchUser(this.handleEmail(email), password);
       this.props.signIn(user);
       let favorites = await fetchFavorites(user.id);
       this.props.loadFavorites(favorites);

@@ -19,12 +19,26 @@ class SignUpForm extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  handleEmail = email => {
+    return email
+      .split('')
+      .map(char => {
+        if (char !== '@' && char !== '.') {
+          return char.toLowerCase();
+        } else {
+          return char;
+        }
+      })
+      .join('');
+  };
+
   handleSubmit = async e => {
     e.preventDefault();
     const { name, email, password } = this.state;
+    const cleanEmail = this.handleEmail(email);
     try {
-      await postNewUser(name, email, password);
-      let newUser = await fetchUser(email, password);
+      await postNewUser(name, cleanEmail, password);
+      let newUser = await fetchUser(cleanEmail, password);
       this.props.signIn(newUser);
       this.props.history.push('/');
       this.props.clearError();
