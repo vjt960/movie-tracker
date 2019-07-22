@@ -27,9 +27,9 @@ class MoviePoster extends React.Component {
 
   handleFavorite = event => {
     event.preventDefault();
-    const { user, id, history } = this.props;
+    const { user, movie, history } = this.props;
     if (user.id) {
-      this.toggleFavorite(user.id, id);
+      this.toggleFavorite(user.id, movie.movie_id);
     } else {
       history.push('/login');
     }
@@ -37,7 +37,7 @@ class MoviePoster extends React.Component {
 
   toggleFavorite(userID, movieID) {
     const { favorites } = this.props;
-    const favoriteIDs = favorites.map(movie => movie.id);
+    const favoriteIDs = favorites.map(movie => movie.movie_id);
     if (!favoriteIDs.includes(movieID)) {
       this.addFavorite(userID);
     } else {
