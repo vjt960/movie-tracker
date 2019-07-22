@@ -1,6 +1,7 @@
 .movie-showcase {
   color: white;
   min-height: 90vh;
+  font-size: 1rem;
 }
 
 .movie-showcase-backdrop-container {
@@ -10,7 +11,7 @@
 }
 
 .movie-showcase-backdrop {
-  height: 60vh;
+  width: 55vw;
   background-size: contain;
   background-repeat: no-repeat;
   justify-content: center;
@@ -21,4 +22,22 @@
 .movie-showcase-details {
   padding: 20px;
   text-align: center;
+}
+
+.movie-showcase-overview {
+  padding: 10px 0;
+  width: 50%;
+  margin: auto;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+.bold {
+  font-weight: 800;
+}
+
+.title {
+  font-weight: 900;
 }

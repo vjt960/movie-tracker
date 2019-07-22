@@ -10,10 +10,10 @@ const MovieShowcase = (props) => {
             className='movie-showcase-backdrop'/>
         </section>
         <section className='movie-showcase-details'>
-          <h2>{props.movie.title}</h2>
-          <p>{props.movie.overview}</p>
-          <p>{props.movie.vote_average}/10</p>
-          <p>Released:  {props.movie.release_date}</p>
+          <h3><span className='title'>{props.movie.title}</span></h3>
+          <p className='movie-showcase-overview'>{props.movie.overview}</p>
+          <p><span className='bold'>Rating:</span>  {props.movie.vote_average}/10</p>
+          <p><span className='bold'>Released:</span>  {props.movie.release_date}</p>
       </section>
     </main>
   )
