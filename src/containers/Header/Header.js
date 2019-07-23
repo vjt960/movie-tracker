@@ -1,11 +1,17 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { signOut } from '../actions';
+import { signOut, clearFavorites, clearError } from '../../actions';
 
 const Header = props => {
   const signInOut = props.user.loggedIn ? 'Sign-out' : 'Sign-in';
   const greeting = props.user.loggedIn ? `Hello, ${props.user.name}!` : '';
+
+  const logoutUser = () => {
+    props.signOut();
+    props.clearFavorites();
+  };
+
   return (
     <header>
       <h1>MOVIE-TRACKER</h1>
@@ -14,12 +20,14 @@ const Header = props => {
         <NavLink to="/" className="home-btn" activeClassName="active">
           Home
         </NavLink>
-        <Link to="/favorites" className="favorites-btn">Favorites</Link>
+        <Link to="/favorites" className="favorites-btn">
+          Favorites
+        </Link>
         <NavLink
           to="/login"
           className="sign-in-btn"
           activeClassName="active"
-          onClick={props.user.loggedIn ? props.signOutUser : null}
+          onClick={props.user.loggedIn ? logoutUser : null}
         >
           {signInOut}
         </NavLink>
@@ -33,7 +41,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  signOutUser: () => dispatch(signOut())
+  signOut: () => dispatch(signOut()),
+  clearFavorites: () => dispatch(clearFavorites()),
+  clearError: () => dispatch(clearError())
 });
 
 export default connect(
