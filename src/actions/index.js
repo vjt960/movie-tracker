@@ -12,6 +12,10 @@ export const hasErrored = errorMessage => ({
   errorMessage
 });
 
+export const clearError = () => ({
+  type: 'CLEAR_ERROR'
+});
+
 export const signIn = user => ({
   type: 'SIGN_IN',
   user
@@ -19,6 +23,10 @@ export const signIn = user => ({
 
 export const signOut = () => ({
   type: 'SIGN_OUT'
+});
+
+export const clearFavorites = () => ({
+  type: 'CLEAR_FAVORITES'
 });
 
 export const createAcct = user => ({
