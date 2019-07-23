@@ -4,6 +4,7 @@ import { withRouter, NavLink } from 'react-router-dom';
 import { loadFavorites } from '../../actions';
 import inactiveFave from '../../images/012-hollywood-star.svg';
 import activeFave from '../../images/011-cinema.svg';
+import PropTypes from 'prop-types';
 import {
   postFavorite,
   removeFavorite,
@@ -102,6 +103,10 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   loadFavorites: movies => dispatch(loadFavorites(movies))
 });
+
+MoviePoster.propTypes = {
+  movie: PropTypes.object.isRequired
+}
 
 export default withRouter(
   connect(
