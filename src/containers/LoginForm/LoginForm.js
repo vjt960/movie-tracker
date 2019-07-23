@@ -15,7 +15,6 @@ export class LoginForm extends Component {
   }
 
   handleChange = e => {
-    e.preventDefault();
     this.setState({ [e.target.name]: e.target.value });
   };
 
@@ -57,7 +56,6 @@ export class LoginForm extends Component {
     return (
       <form className="login-form">
         <input
-          id='login'
           type="email"
           name="email"
           className="login-input"
