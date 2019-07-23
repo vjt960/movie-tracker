@@ -20,7 +20,7 @@ class MoviePoster extends React.Component {
 
   setHover = e => {
     e.preventDefault();
-    this.props.findMovie(parseInt(e.target.id));
+    this.props.findMovie(parseInt(e.target.closest('article').id));
   };
 
   cancelFocus = () => {
@@ -57,7 +57,6 @@ class MoviePoster extends React.Component {
   };
 
   deleteFavorite = (userID, movieID) => {
-    console.log('deleteFavorite firing...');
     removeFavorite(userID, movieID).then(() =>
       fetchFavorites(userID).then(movies => this.props.loadFavorites(movies))
     );
@@ -66,7 +65,11 @@ class MoviePoster extends React.Component {
   render() {
     const { movie } = this.props;
     return (
-      <article className="movie-poster">
+      <article
+        className="movie-poster"
+        id={movie.movie_id}
+        onMouseLeave={() => this.cancelFocus()}
+      >
         <img
           src={this.state.isFavored ? activeFave : inactiveFave}
           className="favorite-icon"
@@ -76,14 +79,13 @@ class MoviePoster extends React.Component {
         <NavLink
           to={`/movies/${movie.movie_id}`}
           className="movie-showcase-link"
+          onMouseEnter={e => this.setHover(e)}
         >
           <img
             src={`https://image.tmdb.org/t/p/w1280/${movie.poster_path}`}
             alt={`${movie.title}-poster`}
             className="poster-img"
-            id={`${movie.movie_id}`}
             onMouseEnter={e => this.setHover(e)}
-            onMouseLeave={() => this.cancelFocus()}
           />
         </NavLink>
         <p className="poster-title">{movie.title}</p>
