@@ -10,6 +10,7 @@ import SignUpForm from '../SignUpForm/SignUpForm';
 import Favorites from '../../components/Favorites/Favorites';
 import Header from '../../containers/Header/Header';
 import MovieShowcase from '../../components/MovieShowcase/MovieShowcase';
+import PropTypes from 'prop-types';
 
 class App extends Component {
   componentDidMount = () => {
@@ -74,6 +75,14 @@ export const mapDispatchToProps = dispatch => ({
   endLoading: () => dispatch(loadComplete()),
   hasErrored: errorMsg => dispatch(hasErrored(errorMsg))
 });
+
+App.propTypes = {
+  loadMovies: PropTypes.func.isRequired,
+  endLoading: PropTypes.func.isRequired,
+  hasErrored: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  error: PropTypes.string.isRequired
+}
 
 export default connect(
   mapStateToProps,
