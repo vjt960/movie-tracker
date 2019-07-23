@@ -20,10 +20,13 @@ export const fetchFavorites = async userID => {
   const url = `http://localhost:3000/api/users/${userID}/favorites`;
   try {
     const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error('Sorry. Unable to retrieve favorites.');
+    }
     const favorites = await response.json();
     return favorites.data;
-  } catch (error) {
-    return error.message;
+  } catch ({ message }) {
+    return message;
   }
 };
 
@@ -43,7 +46,7 @@ export const fetchUser = async (email, password) => {
     const userData = await response.data;
     return userData;
   } catch (error) {
-    throw new Error(error.message);
+    return error.message;
   }
 };
 
@@ -62,7 +65,7 @@ export const postNewUser = async (name, email, password) => {
     const response = await getUserData.json();
     return response;
   } catch (error) {
-    throw new Error(error.message);
+    return error.message;
   }
 };
 
@@ -82,7 +85,13 @@ export const postFavorite = async (userID, movie) => {
     })
   };
   return fetch(url, options)
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) {
+        throw Error('Error adding favorite');
+      } else {
+        return response.json();
+      }
+    })
     .catch(error => error.message);
 };
 
@@ -92,5 +101,13 @@ export const removeFavorite = (userID, movieID) => {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' }
   };
-  return fetch(url, options);
+  return fetch(url, options)
+    .then(response => {
+      if (!response.ok) {
+        throw Error('Error trying to unfavorite movie');
+      } else {
+        return response.json();
+      }
+    })
+    .catch(error => error.message);
 };
