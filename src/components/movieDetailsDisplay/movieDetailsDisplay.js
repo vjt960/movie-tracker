@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 
 const MovieDetailsDisplay = ({ foundMovie }) => {
   return (
@@ -25,5 +27,9 @@ const MovieDetailsDisplay = ({ foundMovie }) => {
     </section>
   );
 };
+
+MovieDetailsDisplay.propTypes = {
+  foundMovie:  PropTypes.object.isRequired
+}
 
 export default MovieDetailsDisplay;
