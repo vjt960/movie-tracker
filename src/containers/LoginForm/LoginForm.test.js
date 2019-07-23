@@ -2,6 +2,7 @@ import React from 'react';
 import { LoginForm, mapStateToProps, mapDispatchToProps } from './LoginForm';
 import { signIn, hasErrored, clearError, loadFavorites } from '../../actions';
 import { shallow } from 'enzyme';
+import { fetchUser } from '../../utilz/apiCalls'
 
 
 describe('LoginForm', () => {
@@ -50,8 +51,26 @@ describe('LoginForm', () => {
         wrapper.find('.login-btn').simulate('click', mockEvent);
 
         expect(instance.handleSubmit).toHaveBeenCalledWith(mockEvent);
-
     });
+
+    it('should run handleEmail on received user data', () => {
+        const mockEmail = 'hashtagBlessed@mail.com';
+        instance.handleEmail = jest.fn();
+
+        instance.handleEmail(mockEmail)
+
+        expect(instance.handleEmail).toHaveBeenCalledWith(mockEmail)
+    });
+
+    it('should fetchUser when handleSubmit is called', () => {
+        const mockEmail = 'hashtagBlessed@mail.com';
+        const mockPassword = '2blessed2bstressed';
+
+        instance.fetchUser = jest.fn();
+        instance.fetchUser(mockEmail, mockPassword)
+
+        expect(instance.fetchUser).toHaveBeenCalledWith(mockEmail, mockPassword)
+    })
 
     it('should reset state when clearInputs is called', () => {
         const expected = {email: '', password: ''};
@@ -63,17 +82,19 @@ describe('LoginForm', () => {
     });
 
     describe('mapStateToProps', () => {
-        it('should return the object of the current user', () => {
+        it('should return the object of the error message and current user', () => {
             const mockState = {
                 user: {id: 1, name: 'Taylor', email: 'hashtagblessed@mail.com', password: '2blessed2bstressed'},
                 favorites: [{title: 'Up'}, {title: 'Forgetting Sarah Marshall'}],
                 movies: [{title: 'Star Wars'}, {title: 'Love Actually'}],
                 focusedMovie: [{title: 'Avengers'}],
-                isLoading: false
+                isLoading: false,
+                error: {error: 'error logging in user'}
             }
     
             const expected =  {
-                user: {id: 1, name: 'Taylor', email: 'hashtagblessed@mail.com', password: '2blessed2bstressed'}
+                user: {id: 1, name: 'Taylor', email: 'hashtagblessed@mail.com', password: '2blessed2bstressed'},
+                error: {error: 'error logging in user'}
             }
 
             const mappedProps = mapStateToProps(mockState)
@@ -83,14 +104,45 @@ describe('LoginForm', () => {
     })
 
     describe('mapDispatchToProps', () => {
-        it('should dispatch signIn when submit is clicked', () => {
-            const mockDispatch = jest.fn();
-            const actionToDispatch = signIn({user: {email: 'hashtagblessed@mail.com', password: '2blessed2bstressed'}})
+        let mockDispatch;
 
+        beforeEach(() => {
+            mockDispatch = jest.fn();
+        });
+        it('should dispatch signIn when handleSubmit is called', () => {
+            const actionToDispatch = hasErrored({error: {error: 'error logging in user'}})
+            
+            const mappedProps = mapDispatchToProps(mockDispatch);
+            mappedProps.hasErrored({error: {error: 'error logging in user'}})
+
+            expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
+        });
+
+        it('should dispatch signIn when handleSubmit is called', () => {
+            const actionToDispatch = signIn({user: {email: 'hashtagblessed@mail.com', password: '2blessed2bstressed'}})
+            
             const mappedProps = mapDispatchToProps(mockDispatch);
             mappedProps.signIn({user: {email: 'hashtagblessed@mail.com', password: '2blessed2bstressed'}})
 
             expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
-        })
+        });
+
+        it('should dispatch loadFavorites when handleSubmit is called', () => {
+            const actionToDispatch = loadFavorites([{title: 'Back To The Future'}, {title: 'Adventures in Babysitting'}])
+            
+            const mappedProps = mapDispatchToProps(mockDispatch);  
+            mappedProps.loadFavorites([{title: 'Back To The Future'}, {title: 'Adventures in Babysitting'}])
+
+            expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
+        });
+
+        it('should dispatch clearError when handleSubmit is called', () => {
+            const actionToDispatch = clearError({error: ''})
+            
+            const mappedProps = mapDispatchToProps(mockDispatch)
+            mappedProps.clearError({error: ''})
+
+            expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
+        });
     })
 })
