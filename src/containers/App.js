@@ -10,7 +10,7 @@ import Favorites from '../components/Favorites';
 import Header from './Header';
 import MovieShowcase from '../components/MovieShowcase';
 
-class App extends Component {
+ export class App extends Component {
   componentDidMount = () => {
     const { loadMovies, endLoading, hasErrored } = this.props;
     try {
