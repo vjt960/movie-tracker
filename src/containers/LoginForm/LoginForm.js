@@ -5,7 +5,7 @@ import { fetchUser, fetchFavorites } from '../../utilz/apiCalls';
 import { signIn, hasErrored, clearError, loadFavorites } from '../../actions';
 import { withRouter } from 'react-router-dom';
 
-class LoginForm extends Component {
+export class LoginForm extends Component {
   constructor() {
     super();
     this.state = {
@@ -15,7 +15,6 @@ class LoginForm extends Component {
   }
 
   handleChange = e => {
-    e.preventDefault();
     this.setState({ [e.target.name]: e.target.value });
   };
 
@@ -88,12 +87,12 @@ class LoginForm extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   user: state.user,
   error: state.error
 });
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   signIn: user => dispatch(signIn(user)),
   hasErrored: errorMessage => dispatch(hasErrored(errorMessage)),
   clearError: () => dispatch(clearError()),
