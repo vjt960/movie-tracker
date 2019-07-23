@@ -1,20 +1,23 @@
 .movie-poster {
   align-items: center;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 225px 30px;
   height: 40vh;
-  margin: 0px 10px;
   width: 225px;
 }
 
 .poster-img {
   border-radius: 10%;
   box-shadow: 0px 0px 8px #fff;
-  height: 225px;
-  width: 150px;
+  grid-column-start: 1;
+  grid-row-end: 2;
+  height: 200px;
+  width: 125px;
 }
 
 .poster-title {
+  grid-column-start: 2;
+  grid-row-end: 3;
   margin-top: 10px;
   text-align: center;
 }
@@ -23,12 +26,12 @@
   background-color: rgb(248, 243, 197);
   background-repeat: no-repeat;
   border-radius: 50%;
-  height: 25px;
-  left: 60px;
+  height: 22px;
+  left: 123px;
   outline: none;
   position: relative;
-  top: 26px;
-  width: 25px;
+  top: -90px;
+  width: 20px;
   
   &:hover {
     cursor: pointer;
