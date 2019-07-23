@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { fetchUser, fetchFavorites } from '../../utilz/apiCalls';
 import { signIn, hasErrored, clearError, loadFavorites } from '../../actions';
 import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class LoginForm extends Component {
   constructor() {
@@ -99,6 +100,15 @@ const mapDispatchToProps = dispatch => ({
   clearError: () => dispatch(clearError()),
   loadFavorites: movies => dispatch(loadFavorites(movies))
 });
+
+LoginForm.propTypes = {
+  user: PropTypes.object.isRequired,
+  error: PropTypes.string.isRequired,
+  signIn: PropTypes.func.isRequired,
+  hasErrored: PropTypes.func.isRequired,
+  clearError: PropTypes.func.isRequired,
+  loadFavorites: PropTypes.func.isRequired
+}
 
 export default withRouter(
   connect(
