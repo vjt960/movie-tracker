@@ -31,17 +31,6 @@ const Header = props => {
         >
           {signInOut}
         </NavLink>
-        <NavLink
-          to="/"
-          className="home-btn"
-          activeClassName="active"
-          onClick={() => props.clearError()}
-        >
-          Home
-        </NavLink>
-        <Link to="/favorites" className="favorites-btn">
-          View Favorites
-        </Link>
       </div>
     </header>
   );
