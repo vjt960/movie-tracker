@@ -87,12 +87,12 @@ export class LoginForm extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   user: state.user,
   error: state.error
 });
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   signIn: user => dispatch(signIn(user)),
   hasErrored: errorMessage => dispatch(hasErrored(errorMessage)),
   clearError: () => dispatch(clearError()),

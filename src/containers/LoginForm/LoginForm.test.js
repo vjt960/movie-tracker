@@ -1,20 +1,15 @@
 import React from 'react';
-import { LoginForm } from './LoginForm';
+import { LoginForm, mapStateToProps, matchDispatchToProps } from './LoginForm';
+import { signIn, hasErrored, clearError, loadFavorites } from '../../actions';
 import { shallow } from 'enzyme';
-import { handleChange, handleEmail, handleSubmit } from './LoginForm'
+
 
 describe('LoginForm', () => {
     let wrapper, instance;
-    // let mockHandleChange = jest.fn();
-    // let mockHandleEmail = jest.fn();
-    // let mockHandleSubmit = jest.fn();
+
     beforeEach(() => {
         wrapper = shallow(
-        <LoginForm 
-            // handleChange={mockHandleChange}
-            // handleEmail={mockHandleEmail}
-            // handleSubmit={mockHandleSubmit}
-        />);
+        <LoginForm />);
         instance = wrapper.instance();
      
     });
@@ -57,6 +52,26 @@ describe('LoginForm', () => {
         instance.clearInputs();
 
         expect(wrapper.state()).toEqual(expected)
+    });
+
+    describe('mapStateToProps', () => {
+        it('should return the object of the current user', () => {
+            const mockState = {
+                user: {id: 1, name: 'Taylor', email: 'hashtagblessed@mail.com', password: '2blessed2bstressed'},
+                favorites: [{title: 'Up'}, {title: 'Forgetting Sarah Marshall'}],
+                movies: [{title: 'Star Wars'}, {title: 'Love Actually'}],
+                focusedMovie: [{title: 'Avengers'}],
+                isLoading: false
+            }
+    
+            const expected =  {
+                user: {id: 1, name: 'Taylor', email: 'hashtagblessed@mail.com', password: '2blessed2bstressed'}
+            }
+
+            const mappedProps = mapStateToProps(mockState)
+
+            expect(mappedProps).toEqual(expected)
+        })
 
     })
 })

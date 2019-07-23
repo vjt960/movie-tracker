@@ -3,7 +3,7 @@ import { loadMovies, loadComplete, hasErrored } from '../../actions';
 import { fetchMovieData } from '../../utilz/apiCalls';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
-import loadingGif from '../../images/loading.gif';
+// import loadingGif from '../../images/loading.gif';
 import LoginForm from '../LoginForm/LoginForm';
 import MoviesDisplay from '../MoviesDisplay/MoviesDisplay';
 import SignUpForm from '../SignUpForm/SignUpForm';
