@@ -18,12 +18,20 @@ describe('LoginForm', () => {
         expect(wrapper).toMatchSnapshot();
     })
 
-    it('should call handleChange on input', () => {
+    it('should call handleChange on email input', () => {
         const mockEmailEvent = { target: {name: 'email', value: 'hashtagBlessed@mail.com'} }
         instance.handleChange = jest.fn();
         
         wrapper.find('[name="email"]').simulate('change', mockEmailEvent);
         expect(wrapper.state('email')).toEqual('hashtagBlessed@mail.com')
+    });
+
+    it('should call handleChange on password input', () => {
+        const mockPasswordEvent = { target: {name: 'password', value: '2blessed2bstressed'} }
+        instance.handleChange = jest.fn();
+        
+        wrapper.find('[name="password"]').simulate('change', mockPasswordEvent);
+        expect(wrapper.state('password')).toEqual('2blessed2bstressed')
     });
 
     it('should set state when handleChange is called', () => {
