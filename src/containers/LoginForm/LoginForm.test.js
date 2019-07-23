@@ -1,5 +1,5 @@
 import React from 'react';
-import { LoginForm, mapStateToProps, matchDispatchToProps } from './LoginForm';
+import { LoginForm, mapStateToProps, mapDispatchToProps } from './LoginForm';
 import { signIn, hasErrored, clearError, loadFavorites } from '../../actions';
 import { shallow } from 'enzyme';
 
@@ -71,7 +71,18 @@ describe('LoginForm', () => {
             const mappedProps = mapStateToProps(mockState)
 
             expect(mappedProps).toEqual(expected)
-        })
+        });
+    })
 
+    describe('mapDispatchToProps', () => {
+        it('should dispatch signIn when submit is clicked', () => {
+            const mockDispatch = jest.fn();
+            const actionToDispatch = signIn({user: {email: 'hashtagblessed@mail.com', password: '2blessed2bstressed'}})
+
+            const mappedProps = mapDispatchToProps(mockDispatch);
+            mappedProps.signIn({user: {email: 'hashtagblessed@mail.com', password: '2blessed2bstressed'}})
+
+            expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
+        })
     })
 })
