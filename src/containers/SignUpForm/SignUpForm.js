@@ -5,7 +5,7 @@ import { signIn, hasErrored, clearError } from '../../actions';
 import { fetchUser } from '../../utilz/apiCalls';
 import { withRouter } from 'react-router-dom';
 
-class SignUpForm extends Component {
+export class SignUpForm extends Component {
   constructor() {
     super();
     this.state = {

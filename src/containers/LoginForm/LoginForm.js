@@ -5,7 +5,7 @@ import { fetchUser, fetchFavorites } from '../../utilz/apiCalls';
 import { signIn, hasErrored, clearError, loadFavorites } from '../../actions';
 import { withRouter } from 'react-router-dom';
 
-class LoginForm extends Component {
+export class LoginForm extends Component {
   constructor() {
     super();
     this.state = {
@@ -57,6 +57,7 @@ class LoginForm extends Component {
     return (
       <form className="login-form">
         <input
+          id='login'
           type="email"
           name="email"
           className="login-input"

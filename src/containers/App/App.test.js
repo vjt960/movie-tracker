@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { fetchMovieData } from '../utilz/apiCalls';
-import { loadMovies, endLoading, hasErrored } from '../actions'
+import { fetchMovieData } from '../../utilz/apiCalls';
+// import { loadMovies, endLoading, hasErrored } from '../../actions'
 import { App } from './App';
 
 describe('App', () => {
@@ -27,10 +27,15 @@ describe('App', () => {
         expect(wrapper).toMatchSnapshot()
     });
 
-    it('should call fetchMovieData in componentDidMount', () => {
+    it.skip('should call fetchMovieData in componentDidMount', () => {
         wrapper.instance().componentDidMount()
         fetchMovieData()
 
         expect(window.fetch).toEqual(mockMovieData);
-    })
+    });
+
+    it('should throw an error if fetch fails', () => {
+
+    });
+
 })
