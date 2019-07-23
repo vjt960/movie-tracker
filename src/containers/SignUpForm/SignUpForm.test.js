@@ -15,7 +15,25 @@ describe('SignUpForm', () => {
         expect(wrapper).toMatchSnapshot();
     });
 
-    it('should update state when a change in input is detected', () => {
+    it('should update state when a change in email input is detected', () => {
+        const mockEvent = { target: {name: 'email', value: 'hashtagBlessed@mail.com'} }
+        instance.handleChange = jest.fn();
+
+        wrapper.find('[name="email"]').simulate('change', mockEvent)
+
+        expect(wrapper.state('email')).toEqual('hashtagBlessed@mail.com') 
+    });
+
+    it('should update state when a change in name input is detected', () => {
+        const mockEvent = { target: {name: 'name', value: 'Taylor'} }
+        instance.handleChange = jest.fn();
+
+        wrapper.find('[name="name"]').simulate('change', mockEvent)
+
+        expect(wrapper.state('name')).toEqual('Taylor') 
+    });
+
+    it('should update state when a change in password input is detected', () => {
         const mockEvent = { target: {name: 'password', value: '2blessed2bstressed'} }
         instance.handleChange = jest.fn();
 
@@ -48,17 +66,19 @@ describe('SignUpForm', () => {
     })
 
     describe('mapStateToProps', () => {
-        it('should return the object of the current user', () => {
+        it('should return the object of the current user and error message', () => {
             const mockState = {
                 user: {id: 1, name: 'Taylor', email: 'hashtagblessed@mail.com', password: '2blessed2bstressed'},
                 favorites: [{title: 'Up'}, {title: 'Forgetting Sarah Marshall'}],
                 movies: [{title: 'Star Wars'}, {title: 'Love Actually'}],
                 focusedMovie: [{title: 'Avengers'}],
-                isLoading: false
+                isLoading: false,
+                error: {error: 'error creating account'}
             }
 
             const expected = {
                 user: {id: 1, name: 'Taylor', email: 'hashtagblessed@mail.com', password: '2blessed2bstressed'},
+                error: {error: 'error creating account'}
             }
 
             const mappedProps = mapStateToProps(mockState)
