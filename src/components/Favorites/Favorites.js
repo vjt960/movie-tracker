@@ -1,11 +1,11 @@
 import React from 'react';
-import MoviePoster from '../MoviePoster/MoviePoster';
+import FavoritePoster from '../FavoritePoster/FavoritePoster';
 import { connect } from 'react-redux';
 
 const Favorites = props => {
   const { favorites } = props;
   const favesDisplay = favorites.map(movie => {
-    return <MoviePoster movie={movie} key={movie.movie_id} />;
+    return <FavoritePoster movie={movie} key={movie.movie_id} />;
   });
   return <section className="favorites">{favesDisplay}</section>;
 };
