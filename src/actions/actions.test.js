@@ -2,47 +2,11 @@ import * as actions from './index';
 
 describe('actions', () => {
   it('should have a type of LOAD_MOVIES', () => {
-    const movies = [
-      {
-        vote_count: 1888,
-        id: 429617,
-        video: false,
-        vote_average: 7.8,
-        title: 'Spider-Man: Far from Home',
-        popularity: 417.77,
-        poster_path: '/rjbNpRMoVvqHmhmksbokcyCr7wn.jpg',
-        original_language: 'en',
-        original_title: 'Spider-Man: Far from Home',
-        genre_ids: [28, 12, 878],
-        backdrop_path: '/dihW2yTsvQlust7mSuAqJDtqW7k.jpg',
-        adult: false,
-        overview:
-          'Peter Parker and his friends go on a summer trip to Europe. However, they will hardly be able to rest - Peter will have to agree to help Nick Fury uncover the mystery of creatures that cause natural disasters and destruction throughout the continent.',
-        release_date: '2019-06-28'
-      }
-    ];
+    const movies = [{ title: 'Spider-Man: Far from Home' }];
 
     const expectedAction = {
       type: 'LOAD_MOVIES',
-      movies: [
-        {
-          vote_count: 1888,
-          id: 429617,
-          video: false,
-          vote_average: 7.8,
-          title: 'Spider-Man: Far from Home',
-          popularity: 417.77,
-          poster_path: '/rjbNpRMoVvqHmhmksbokcyCr7wn.jpg',
-          original_language: 'en',
-          original_title: 'Spider-Man: Far from Home',
-          genre_ids: [28, 12, 878],
-          backdrop_path: '/dihW2yTsvQlust7mSuAqJDtqW7k.jpg',
-          adult: false,
-          overview:
-            'Peter Parker and his friends go on a summer trip to Europe. However, they will hardly be able to rest - Peter will have to agree to help Nick Fury uncover the mystery of creatures that cause natural disasters and destruction throughout the continent.',
-          release_date: '2019-06-28'
-        }
-      ]
+      movies: [{ title: 'Spider-Man: Far from Home' }]
     };
 
     const result = actions.loadMovies(movies);
@@ -51,13 +15,13 @@ describe('actions', () => {
   });
 
   it('should have a type of LOAD_COMPLETE', () => {
-      const expectedAction = {
-          type: 'LOAD_COMPLETE'
-      }
+    const expectedAction = {
+      type: 'LOAD_COMPLETE'
+    };
 
-      const result = actions.loadComplete();
+    const result = actions.loadComplete();
 
-      expect(result).toEqual(expectedAction)
+    expect(result).toEqual(expectedAction);
   });
 
   it('should have a type of HAS_ERRORED', () => {
@@ -68,10 +32,16 @@ describe('actions', () => {
       errorMessage
     };
 
-    const result = actions.hasErrored(errorMessage)
+    const result = actions.hasErrored(errorMessage);
 
-    expect(result).toEqual(expectedAction)
-  })
+    expect(result).toEqual(expectedAction);
+  });
+
+  it('should have a type of CLEAR_ERROR', () => {
+    const expectedAction = { type: 'CLEAR_ERROR' };
+    const result = actions.clearError();
+    expect(result).toEqual(expectedAction);
+  });
 
   it('should have a type of SIGN_IN', () => {
     const user = {
@@ -106,29 +76,47 @@ describe('actions', () => {
     expect(result).toEqual(expectedAction);
   });
 
+  it('should have a type of CLEAR_FAVORITES', () => {
+    const expectedAction = { type: 'CLEAR_FAVORITES' };
+    const result = actions.clearFavorites();
+    expect(result).toEqual(expectedAction);
+  });
+
   it('should have a type of CREATE_ACCT', () => {
-      const user = {
-        name: 'Arya',
-        email: 'agirlhasnoemail@aol.com',
-        password: 'IheartTheHound',
-        id: 1000
-      }
+    const user = {
+      name: 'Arya',
+      email: 'agirlhasnoemail@aol.com',
+      password: 'IheartTheHound',
+      id: 1000
+    };
 
-      const expectedAction = {
-          type: 'CREATE_ACCT',
-          user
-      }
+    const expectedAction = {
+      type: 'CREATE_ACCT',
+      user
+    };
 
-      const result = actions.createAcct(user)
+    const result = actions.createAcct(user);
 
-      expect(result).toEqual(expectedAction)
+    expect(result).toEqual(expectedAction);
   });
 
-  it('should have a type of ADD_FAVORITE', () => {
-
+  it('should have a type of LOAD_FAVORITES', () => {
+    const mockMovies = [{ title: 'movie_1' }, { title: 'movie_2' }];
+    const expectedAction = { type: 'LOAD_FAVORITES', movies: mockMovies };
+    const result = actions.loadFavorites(mockMovies);
+    expect(result).toEqual(expectedAction);
   });
 
-  it('should have a type of VIEW_FAVORITES', () => {});
+  it('should have a type of FOCUS_MOVIE', () => {
+    const mockMovie = { title: 'movie_1' };
+    const expectedAction = { type: 'FOCUS_MOVIE', movie: mockMovie };
+    const result = actions.focusMovie(mockMovie);
+    expect(result).toEqual(expectedAction);
+  });
 
-  it('should have a type of DELETE_FAVORITE', () => {})
+  it('should have a type of CANCEL_FOCUS', () => {
+    const expectedAction = { type: 'CANCEL_FOCUS' };
+    const result = actions.cancelFocus();
+    expect(result).toEqual(expectedAction);
+  });
 });
