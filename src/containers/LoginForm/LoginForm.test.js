@@ -2,7 +2,7 @@ import React from 'react';
 import { LoginForm, mapStateToProps, mapDispatchToProps } from './LoginForm';
 import { signIn, hasErrored, clearError, loadFavorites } from '../../actions';
 import { shallow } from 'enzyme';
-import { fetchUser } from '../../utilz/apiCalls'
+
 
 
 describe('LoginForm', () => {

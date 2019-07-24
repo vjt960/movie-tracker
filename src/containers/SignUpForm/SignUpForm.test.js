@@ -42,18 +42,13 @@ describe('SignUpForm', () => {
         expect(wrapper.state('password')).toEqual('2blessed2bstressed') 
     });
 
-    it.skip('should return a lowercase string when handleEmail is called', () => {
-        // const mockEmail = 'HaShTagBlEsSeD@mail.com';
-        // const expected = 'hashtagblessed@mail.com'
-        instance.handleSubmit = jest.fn();
+    it('should run handleEmail on received user data', () => {
+        const mockEmail = 'hashtagBlessed@mail.com';
         instance.handleEmail = jest.fn();
-        // const result = instance.handleEmail(mockEmail)
 
-        instance.handleSubmit();
+        instance.handleEmail(mockEmail)
 
-        expect(instance.handleEmail).toHaveBeenCalled();
-
-        
+        expect(instance.handleEmail).toHaveBeenCalledWith(mockEmail)
     });
 
     it('should reset state when clearInputs is called', () => {
@@ -88,12 +83,34 @@ describe('SignUpForm', () => {
     })
 
     describe('mapDispatchToProps', () => {
-        it('should call dispatch with signIn when the submit button is clicked', () => {
-            const mockDispatch = jest.fn();
+        let mockDispatch;
+
+        beforeEach(() => {
+            mockDispatch = jest.fn();
+        })
+        it('should call dispatch with signIn when handleSubmit is called', () => {
             const actionToDispatch = signIn({id: 1, name: 'Taylor', email: 'hashtagblessed@mail.com', password: '2blessed2bstressed'})
 
             const mappedProps = mapDispatchToProps(mockDispatch);
             mappedProps.signIn({id: 1, name: 'Taylor', email: 'hashtagblessed@mail.com', password: '2blessed2bstressed'})
+
+            expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+        });
+
+        it('should call dispatch with hasErrored when handleSubmit is called', () => {
+            const actionToDispatch = hasErrored({error: 'error creating account'});
+
+            const mappedProps = mapDispatchToProps(mockDispatch);
+            mappedProps.hasErrored({error: 'error creating account'});
+
+            expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+        });
+
+        it('should call dispatch with clearError when handleSubmit is called', () => {
+            const actionToDispatch = clearError({error: ''})
+
+            const mappedProps = mapDispatchToProps(mockDispatch)
+            mappedProps.clearError({error: ''})
 
             expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
         })
