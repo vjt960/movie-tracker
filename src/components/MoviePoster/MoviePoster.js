@@ -63,7 +63,14 @@ class MoviePoster extends React.Component {
     );
   };
 
+  determineFavorite = () => {
+    const { favorites, movie } = this.props;
+    const isFavorite = favorites.find(fave => fave.movie_id === movie.movie_id);
+    return isFavorite ? activeFave : inactiveFave;
+  };
+
   render() {
+    console.log(this.determineFavorite())
     const { movie } = this.props;
     return (
       <article
@@ -72,7 +79,7 @@ class MoviePoster extends React.Component {
         onMouseLeave={() => this.cancelFocus()}
       >
         <img
-          src={this.state.isFavored ? activeFave : inactiveFave}
+          src={this.determineFavorite()}
           className="favorite-icon"
           alt="fav-icon"
           onClick={e => this.handleFavorite(e)}
