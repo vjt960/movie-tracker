@@ -3,11 +3,7 @@
   display: grid;
   grid-template-rows: 225px 30px;
   height: 40vh;
-  transition: 1s ease-in-out;
   width: 225px;
-  & :hover {
-    transform: scale(1.05);
-  }
 }
 
 .poster-img {
