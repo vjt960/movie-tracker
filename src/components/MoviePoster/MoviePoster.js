@@ -12,13 +12,6 @@ import {
 } from '../../utilz/apiCalls';
 
 export class MoviePoster extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      isFavored: false
-    };
-  }
-
   setHover = e => {
     e.preventDefault();
     this.props.findMovie(parseInt(e.target.closest('article').id));
@@ -67,9 +60,12 @@ export class MoviePoster extends React.Component {
     const { favorites, movie } = this.props;
     if (!favorites) {
       return inactiveFave;
+    } else {
+      const isFavorite = favorites.find(
+        fave => fave.movie_id === movie.movie_id
+      );
+      return isFavorite ? activeFave : inactiveFave;
     }
-    const isFavorite = favorites.find(fave => fave.movie_id === movie.movie_id);
-    return isFavorite ? activeFave : inactiveFave;
   };
 
   render() {

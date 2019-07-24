@@ -46,7 +46,7 @@ export const fetchUser = async (email, password) => {
     const userData = await response.data;
     return userData;
   } catch (error) {
-    return error.message;
+    throw Error(error.message);
   }
 };
 
@@ -65,7 +65,7 @@ export const postNewUser = async (name, email, password) => {
     const response = await getUserData.json();
     return response;
   } catch (error) {
-    return error.message;
+    throw Error(error.message);
   }
 };
 
