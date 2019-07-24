@@ -3,7 +3,7 @@ import FavoritePoster from '../FavoritePoster/FavoritePoster';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-const Favorites = ({ favorites }) => {
+export const Favorites = ({ favorites }) => {
   const favesDisplay = favorites.map(movie => {
     return <FavoritePoster movie={movie} key={movie.movie_id} />;
   });
