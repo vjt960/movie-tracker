@@ -109,7 +109,7 @@ SignUpForm.propTypes = {
   signIn: PropTypes.func.isRequired,
   hasErrored: PropTypes.func.isRequired,
   clearError: PropTypes.func.isRequired
-}
+};
 
 export default withRouter(
   connect(

@@ -4,11 +4,9 @@ import { SignUpForm, mapStateToProps, mapDispatchToProps } from './SignUpForm';
 import { signIn, hasErrored, clearError } from '../../actions';
 
 describe('SignUpForm', () => {
-  let wrapper, instance, props, mockEvent;
+  let wrapper, instance, props;
 
   beforeEach(() => {
-    // const historyMock = { push: jest.fn() };
-    mockEvent = { preventDefault: jest.fn() };
     props = {
       user: { name: 'Gumby' },
       error: '',

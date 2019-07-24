@@ -1,10 +1,10 @@
 import React from 'react';
 import { Header, mapStateToProps, mapDispatchToProps } from './Header';
 import { shallow } from 'enzyme';
-import { signOut, clearFavorites } from '../../actions';
+import { signOut } from '../../actions';
 
 describe('Header', () => {
-  let wrapper, instance, user, mockSignOut, mockClearFavorites;
+  let wrapper, user, mockSignOut, mockClearFavorites;
 
   beforeEach(() => {
     user = {
@@ -20,7 +20,6 @@ describe('Header', () => {
         clearFavorites={mockClearFavorites}
       />
     );
-    instance = wrapper.instance();
   });
 
   it('should match the snapshot', () => {
@@ -73,8 +72,6 @@ describe('Header', () => {
     });
 
     it('should call dispatch with clearFavorites when logoutUser is called', () => {
-      const actionToDispatch = clearFavorites();
-
       const mappedProps = mapDispatchToProps(mockDispatch);
       mappedProps.clearFavorites();
 

@@ -1,4 +1,4 @@
-const cleanMovieData = (movieData) => {
+const cleanMovieData = movieData => {
   return movieData.map(movie => {
     return {
       movie_id: movie.id,
@@ -8,8 +8,8 @@ const cleanMovieData = (movieData) => {
       backdrop: movie.backdrop_path,
       overview: movie.overview,
       release_date: movie.release_date
-    }
-  })
-}
+    };
+  });
+};
 
 export default cleanMovieData;

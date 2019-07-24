@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-
 const MovieDetailsDisplay = ({ foundMovie }) => {
   return (
     <section className="movie-details-display ">
@@ -12,12 +11,10 @@ const MovieDetailsDisplay = ({ foundMovie }) => {
           className="details-img"
         />
       )}
-      <article className='movie-details-overview'>
+      <article className="movie-details-overview">
         {foundMovie && (
           <h2 className="details details-title">
-            <span className='title'>
-              {foundMovie.title}
-            </span>
+            <span className="title">{foundMovie.title}</span>
           </h2>
         )}
         {foundMovie && (
@@ -29,7 +26,7 @@ const MovieDetailsDisplay = ({ foundMovie }) => {
 };
 
 MovieDetailsDisplay.propTypes = {
-  foundMovie:  PropTypes.object.isRequired
-}
+  foundMovie: PropTypes.object.isRequired
+};
 
 export default MovieDetailsDisplay;
