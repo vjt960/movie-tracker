@@ -2,14 +2,15 @@ import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signOut, clearFavorites, clearError } from '../../actions';
+import PropTypes from 'prop-types';
 
-export const Header = props => {
-  const signInOut = props.user.loggedIn ? 'Sign-out' : 'Sign-in';
-  const greeting = props.user.loggedIn ? `Hello, ${props.user.name}!` : '';
+const Header = ({ user, signOut, clearFavorites }) => {
+  const signInOut = user.loggedIn ? 'Sign-out' : 'Sign-in';
+  const greeting = user.loggedIn ? `Hello, ${user.name}!` : '';
 
   const logoutUser = () => {
-    props.signOut();
-    props.clearFavorites();
+    signOut();
+    clearFavorites();
   };
 
   return (
@@ -27,7 +28,7 @@ export const Header = props => {
           to="/login"
           className="sign-in-btn"
           activeClassName="active"
-          onClick={props.user.loggedIn ? logoutUser : null}
+          onClick={user.loggedIn ? logoutUser : null}
         >
           {signInOut}
         </NavLink>
@@ -45,6 +46,12 @@ export const mapDispatchToProps = dispatch => ({
   clearFavorites: () => dispatch(clearFavorites()),
   clearError: () => dispatch(clearError())
 });
+
+Header.propTypes = {
+  user: PropTypes.object.isRequired,
+  signOut: PropTypes.func.isRequired,
+  clearFavorites: PropTypes.func.isRequired
+}
 
 export default connect(
   mapStateToProps,

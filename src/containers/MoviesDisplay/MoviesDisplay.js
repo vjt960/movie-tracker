@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import MoviePoster from '../../components/MoviePoster/MoviePoster';
 import MoviesDetailDisplay from '../../components/movieDetailsDisplay/movieDetailsDisplay';
 import { focusMovie, cancelFocus } from '../../actions';
+import PropTypes from 'prop-types';
 
 const MoviesDisplay = ({
   movies,
@@ -51,6 +52,14 @@ const mapDispatchToProps = dispatch => ({
   focusMovie: movie => dispatch(focusMovie(movie)),
   cancelFocus: () => dispatch(cancelFocus())
 });
+
+MoviesDisplay.propTypes = {
+  movies: PropTypes.array.isRequired,
+  focusedMovie: PropTypes.object.isRequired,
+  error: PropTypes.string.isRequired,
+  focusMovie: PropTypes.func.isRequired,
+  cancelFocus: PropTypes.func.isRequired
+}
 
 export default connect(
   mapStateToProps,
