@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signOut, clearFavorites, clearError } from '../../actions';
 import PropTypes from 'prop-types';
@@ -18,13 +18,21 @@ const Header = ({ user, signOut, clearFavorites }) => {
       <h1>MOVIE-TRACKER</h1>
       <p className="header-greeting">{greeting}</p>
       <div className="header-btns-container">
-        <NavLink to="/" className="home-btn" activeClassName="active">
+        <NavLink
+          exact
+          to="/" 
+          className="home-btn" 
+          activeClassName="active">
           Home
         </NavLink>
-        <Link to="/favorites" className="favorites-btn">
+        <NavLink 
+          to="/favorites" 
+          className="favorites-btn" 
+          activeClassName="active">
           Favorites
-        </Link>
+        </NavLink>
         <NavLink
+          exact
           to="/login"
           className="sign-in-btn"
           activeClassName="active"
