@@ -70,7 +70,6 @@ class MoviePoster extends React.Component {
   };
 
   render() {
-    console.log(this.determineFavorite())
     const { movie } = this.props;
     return (
       <article
