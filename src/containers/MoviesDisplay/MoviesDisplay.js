@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import MoviePoster from '../../components/MoviePoster/MoviePoster';
+import MoviePoster from '../MoviePoster/MoviePoster';
 import MoviesDetailDisplay from '../../components/movieDetailsDisplay/movieDetailsDisplay';
 import { focusMovie, cancelFocus } from '../../actions';
 import PropTypes from 'prop-types';

@@ -17,7 +17,7 @@ Movie-Tracker is an application designed to show movies that are now playing in 
 2.  Write squeaky clean, well refactored code using ES6 & ES7 syntax.
 3.  Create a clean UI while also displaying all necessary information.
 4.  Incorporate & show understanding of Redux.
-5.  Use a modular architecture for your application file structure.
+5.  Use a modular architecture for application file structure.
 6.  Gain a better understanding of fetch calls, especially Posting new information to the server.
 7.  Understand and utilize React Router to effectively display data on different 'pages'.
 8.  Use propTypes for every component receiving props.
@@ -31,6 +31,7 @@ Movie-Tracker is an application designed to show movies that are now playing in 
 3.  run npm start to run the server
 4.  open localhost:3000 (unless your terminal says otherwise)
 5.  experiment with the different functionalities & look for a movie to see tonight!
+6.  For movie-tracker membership privledges such as favoring movies, clone the back-end server, run npm install, and npm start PRIOR to starting fe server.
 
 ###  Screenshots
 
