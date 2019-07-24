@@ -3,7 +3,7 @@ import { loadMovies, loadComplete, hasErrored } from '../../actions';
 import { fetchMovieData } from '../../utilz/apiCalls';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
-// import loadingGif from '../../images/loading.gif';
+import loadingGif from '../../images/loading.gif';
 import LoginForm from '../LoginForm/LoginForm';
 import MoviesDisplay from '../MoviesDisplay/MoviesDisplay';
 import SignUpForm from '../SignUpForm/SignUpForm';
@@ -28,8 +28,6 @@ import PropTypes from 'prop-types';
 
   render() {
     const { isLoading, error } = this.props;
-    const loadingGif =
-      'https://i.pinimg.com/originals/ec/d6/bc/ecd6bc09da634e4e2efa16b571618a22.gif';
     const loading = (
       <section className="loading-gif-container">
         <img src={loadingGif} alt="loading-gif" className="loading-gif" />

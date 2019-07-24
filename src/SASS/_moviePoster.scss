@@ -23,10 +23,11 @@
 }
 
 .favorite-icon {
-  // background-color: rgb(248, 243, 197);
+  background-color: #fff;
   background-repeat: no-repeat;
-  border: solid 1px white;
   border-radius: 50%;
+  border: solid 1px white;
+  box-shadow: 0px 0px 5px #fff;
   height: 22px;
   left: 123px;
   outline: none;
