@@ -1,14 +1,15 @@
 .fave-poster {
-  height: 90%;
-  width: 100%;
-  margin: 0;
+  height: 350px;
+  width: 200px;
+  margin: 10px auto;
   padding: 0;
   position: relative;
+  justify-self: center;
 }
 
 .poster-header {
   height:50px;
-  width: 100%;
+  width: 200px;
   background: transparent;
   position: absolute;
   display: flex;
@@ -35,10 +36,10 @@
   display: none;
 }
 
+
 .fave-poster-img {
-  object-fit: cover;
-  height: 100%;
-  width: 100%;
+  width: 200px;
+  background-size: cover;
 }
 
 .poster-title {

@@ -4,9 +4,16 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 const Favorites = ({ favorites }) => {
-  const favesDisplay = favorites.map(movie => {
+  const faves = favorites.map(movie => {
     return <FavoritePoster movie={movie} key={movie.movie_id} />;
   });
+  const noFaves = (
+    <section className='no-faves-container'>
+      <p className='no-favs-prompt'>No favorites, yet!</p>
+    </section>
+  );
+  const favesDisplay = (favorites.length ? faves : noFaves)
+  console.log(favesDisplay)
   return <section className="favorites">{favesDisplay}</section>;
 };
 
