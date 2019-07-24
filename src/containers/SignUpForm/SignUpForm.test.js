@@ -51,6 +51,25 @@ describe('SignUpForm', () => {
         expect(instance.handleEmail).toHaveBeenCalledWith(mockEmail)
     });
 
+    it('should call handleSubmit when submit button is clicked', () => {
+        const mockEvent = { preventDefault: jest.fn() }
+        instance.handleSubmit = jest.fn();
+
+        wrapper.find('.login-btn').simulate('click', mockEvent);
+
+        expect(instance.handleSubmit).toHaveBeenCalledWith(mockEvent);
+    });
+
+    it.skip('should navigate to home page when user successfully logs in', () => {
+        const historyMock = { push: jest.fn() };
+        const mockEvent = { preventDefault: jest.fn() }
+        // const wrapper = shallow(<SignUpForm history={historyMock}/>)
+        instance.handleSubmit(mockEvent)
+        instance.props.historyMock('/')
+
+        expect(historyMock.mock.calls.push[0]).toEqual('/')
+    })
+
     it('should reset state when clearInputs is called', () => {
         const expected = {name: '', email: '', password: ''}
         instance.setState({ name: 'Shiva', email: 'hashtagBlessed@mail.com', password: '2blessed2bstressed'})
@@ -58,7 +77,7 @@ describe('SignUpForm', () => {
         instance.clearInputs();
 
         expect(wrapper.state()).toEqual(expected)
-    })
+    });
 
     describe('mapStateToProps', () => {
         it('should return the object of the current user and error message', () => {
