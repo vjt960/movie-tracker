@@ -46,11 +46,11 @@ const Header = ({ user, signOut, clearFavorites }) => {
   );
 };
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   user: state.user
 });
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   signOut: () => dispatch(signOut()),
   clearFavorites: () => dispatch(clearFavorites()),
   clearError: () => dispatch(clearError())
