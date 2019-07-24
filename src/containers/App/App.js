@@ -12,7 +12,7 @@ import Header from '../../containers/Header/Header';
 import MovieShowcase from '../../components/MovieShowcase/MovieShowcase';
 import PropTypes from 'prop-types';
 
- export class App extends Component {
+export class App extends Component {
   componentDidMount = () => {
     const { loadMovies, endLoading, hasErrored } = this.props;
     try {
@@ -41,12 +41,15 @@ import PropTypes from 'prop-types';
         <Route exact path="/login" render={() => <LoginForm />} />
         <Route exact path="/signup" render={() => <SignUpForm />} />
         <Route exact path="/" render={() => <MoviesDisplay />} />
-        <Route path='/movies/:id' render={({ match }) => {
-          const { id } = match.params;
-          const movie = this.props.movies.find(movie => movie.movie_id === parseInt(id));
-          console.log(movie)
-          return movie && <MovieShowcase movie={movie} />
-        }}
+        <Route
+          path="/movies/:id"
+          render={({ match }) => {
+            const { id } = match.params;
+            const movie = this.props.movies.find(
+              movie => movie.movie_id === parseInt(id)
+            );
+            return movie && <MovieShowcase movie={movie} />;
+          }}
         />
         <Route exact path="/favorites" render={() => <Favorites />} />
       </main>
@@ -75,7 +78,7 @@ App.propTypes = {
   hasErrored: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
   error: PropTypes.string.isRequired
-}
+};
 
 export default connect(
   mapStateToProps,

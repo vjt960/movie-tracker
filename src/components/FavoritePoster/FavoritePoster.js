@@ -4,7 +4,7 @@ import { withRouter, Link } from 'react-router-dom';
 import { loadFavorites } from '../../actions';
 import { removeFavorite, fetchFavorites } from '../../utilz/apiCalls';
 
-const FavoritePoster = ({ user, movie, loadFavorites }) => {
+export const FavoritePoster = ({ user, movie, loadFavorites }) => {
   const handleFavorite = event => {
     event.preventDefault();
     deleteFavorite(user.id, movie.movie_id);

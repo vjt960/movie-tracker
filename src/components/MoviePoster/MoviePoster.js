@@ -11,14 +11,7 @@ import {
   fetchFavorites
 } from '../../utilz/apiCalls';
 
-class MoviePoster extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      isFavored: false
-    };
-  }
-
+export class MoviePoster extends React.Component {
   setHover = e => {
     e.preventDefault();
     this.props.findMovie(parseInt(e.target.closest('article').id));
@@ -65,8 +58,14 @@ class MoviePoster extends React.Component {
 
   determineFavorite = () => {
     const { favorites, movie } = this.props;
-    const isFavorite = favorites.find(fave => fave.movie_id === movie.movie_id);
-    return isFavorite ? activeFave : inactiveFave;
+    if (!favorites) {
+      return inactiveFave;
+    } else {
+      const isFavorite = favorites.find(
+        fave => fave.movie_id === movie.movie_id
+      );
+      return isFavorite ? activeFave : inactiveFave;
+    }
   };
 
   render() {
@@ -112,7 +111,7 @@ const mapDispatchToProps = dispatch => ({
 
 MoviePoster.propTypes = {
   movie: PropTypes.object.isRequired
-}
+};
 
 export default withRouter(
   connect(

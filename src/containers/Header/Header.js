@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { signOut, clearFavorites, clearError } from '../../actions';
 import PropTypes from 'prop-types';
 
-const Header = ({ user, signOut, clearFavorites }) => {
+export const Header = ({ user, signOut, clearFavorites, clearError }) => {
   const signInOut = user.loggedIn ? 'Sign-out' : 'Sign-in';
   const greeting = user.loggedIn ? `Hello, ${user.name}!` : '';
 
@@ -20,16 +20,19 @@ const Header = ({ user, signOut, clearFavorites }) => {
       <div className="header-btns-container">
         <NavLink
           exact
-          to="/" 
-          className="home-btn" 
-          activeClassName="active">
+          to="/"
+          className="home-btn"
+          activeClassName="active"
+          onClick={() => clearError()}
+        >
           Home
         </NavLink>
-        <NavLink 
+        <NavLink
           exact
-          to="/favorites" 
-          className="favorites-btn" 
-          activeClassName="active">
+          to="/favorites"
+          className="favorites-btn"
+          activeClassName="active"
+        >
           Favorites
         </NavLink>
         <NavLink
@@ -60,7 +63,7 @@ Header.propTypes = {
   user: PropTypes.object.isRequired,
   signOut: PropTypes.func.isRequired,
   clearFavorites: PropTypes.func.isRequired
-}
+};
 
 export default connect(
   mapStateToProps,

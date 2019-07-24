@@ -139,8 +139,9 @@ describe('apiCalls', () => {
           ok: false
         });
       });
-      const result = await fetchUser();
-      expect(result).toEqual('Sorry. Incorrect email or password.');
+      expect(fetchUser()).rejects.toEqual(
+        Error('Sorry. Incorrect email or password.')
+      );
     });
   });
 
@@ -181,9 +182,8 @@ describe('apiCalls', () => {
           ok: false
         });
       });
-      const result = await postNewUser();
-      expect(result).toEqual(
-        'Sorry. An account with that email already exists.'
+      expect(postNewUser()).rejects.toEqual(
+        Error('Sorry. An account with that email already exists.')
       );
     });
   });

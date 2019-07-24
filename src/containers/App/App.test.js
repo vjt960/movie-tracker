@@ -1,33 +1,64 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-// import { fetchMovieData } from './apiCalls';
-// import { loadMovies, endLoading, hasErrored } from '../../actions'
-import { App } from './App';
+import { App, mapStateToProps, mapDispatchToProps } from './App';
+import { loadMovies } from '../../actions';
 
-// jest.mock('./apiCalls', () => ({
-//     fetchMovieData: jest.fn().mockImplementation(() => {
-//         return [
-//             {id: 1, title: 'the little mermaid', description:'young girl gives up her voice to be with a man'}, 
-//             {id: 2, title: 'beauty and the beast', description: 'young girl gets kidnapped by a beast to save her father and succumbs to Stockholm syndrome'}
-//         ]
-//     })
-// }));
+jest.mock('../../utilz/apiCalls', () => ({
+  fetchMovieData: jest.fn().mockImplementation(() => {
+    return [{ title: 'movie_1' }, { title: 'movie_2' }];
+  })
+}));
 
 describe('App', () => {
+  describe('App Component', () => {
     let wrapper;
 
     beforeEach(() => {
-        wrapper = shallow(<App />);
+      const props = {
+        loadMovies: jest.fn(),
+        endLoading: jest.fn(),
+        hasErrored: jest.fn(),
+        isLoading: false,
+        error: ''
+      };
+      wrapper = shallow(<App {...props} />, { disableLifecycleMethods: true });
     });
 
-    it('should match the snapshot', () => {
-        expect(wrapper).toMatchSnapshot()
+    it('should match snapshot', () => {
+      expect(wrapper).toMatchSnapshot();
     });
+  });
 
-    it.skip('should call fetchMovieData in componentDidMount', () => {
-        wrapper.instance().componentDidMount();
+  describe('mapStateToProps', () => {
+    it('should return an object with the movies array', () => {
+      const mockState = {
+        movies: [{ title: 'Shrek' }],
+        isLoading: false,
+        error: '',
+        favorites: [],
+        setHover: null,
+        focusedMovie: { title: 'SpiderPig' }
+      };
+      const expected = {
+        movies: [{ title: 'Shrek' }],
+        isLoading: false,
+        error: '',
+        favorites: []
+      };
 
-        expect(wrapper.fetchMovieData).toHaveBeenCalled();
+      const mappedProps = mapStateToProps(mockState);
+      expect(mappedProps).toEqual(expected);
     });
+  });
 
-})
+  describe('mapDispatchToProps', () => {
+    it('calls dispatch with movies when loadMovies is called', () => {
+      const mockMovies = [{ title: 'movie_1' }];
+      const mockDispatch = jest.fn();
+      const actionToDispatch = loadMovies(mockMovies);
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      mappedProps.loadMovies(mockMovies);
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    });
+  });
+});

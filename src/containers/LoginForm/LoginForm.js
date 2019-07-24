@@ -107,7 +107,7 @@ LoginForm.propTypes = {
   hasErrored: PropTypes.func.isRequired,
   clearError: PropTypes.func.isRequired,
   loadFavorites: PropTypes.func.isRequired
-}
+};
 
 export default withRouter(
   connect(
