@@ -11,7 +11,7 @@ import {
   fetchFavorites
 } from '../../utilz/apiCalls';
 
-class MoviePoster extends React.Component {
+export class MoviePoster extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -106,7 +106,7 @@ const mapDispatchToProps = dispatch => ({
 
 MoviePoster.propTypes = {
   movie: PropTypes.object.isRequired
-}
+};
 
 export default withRouter(
   connect(
