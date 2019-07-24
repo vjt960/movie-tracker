@@ -21,6 +21,9 @@
 
 .login-btn {
   width: 40%;
+  &:hover {
+    background-color: grey;
+  }
 }
 
 .login-create-acct {
