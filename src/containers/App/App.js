@@ -7,7 +7,7 @@ import loadingGif from '../../images/loading.gif';
 import LoginForm from '../LoginForm/LoginForm';
 import MoviesDisplay from '../MoviesDisplay/MoviesDisplay';
 import SignUpForm from '../SignUpForm/SignUpForm';
-import Favorites from '../../components/Favorites/Favorites';
+import Favorites from '../Favorites/Favorites';
 import Header from '../../containers/Header/Header';
 import MovieShowcase from '../../components/MovieShowcase/MovieShowcase';
 import PropTypes from 'prop-types';
