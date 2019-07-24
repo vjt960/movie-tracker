@@ -10,16 +10,16 @@ main {
   background-color: black;
   min-height: 100vh;
   min-width: 100%;
-  
+  font-family: 'Open Sans', sans-serif;
 }
 
 .loading-gif-container {
-  display: flex;
-  margin: auto;
-  justify-content: center;
   align-items: center; 
-  width: 90vw;
+  display: flex;
   height: 60vh;
+  justify-content: center;
+  margin: auto;
+  width: 90vw;
 }
 
 .loading-gif {

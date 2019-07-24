@@ -1,68 +1,37 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Movie-Tracker
 
-In the project directory, you can run:
+*Project Contributors:*
+* Taylor Jordan (https://github.com/TaylorNoelJordan)
+* Vinton Te'o (https://github.com/vjt960) 
+* David Engel (https://github.com/David5280)
 
-### `npm start`
+## Summary
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Movie-Tracker is an application designed to show movies that are now playing in Theaters.  This app pulls from The Movie DB ABI (https://www.themoviedb.org/documentation/api) for its movie information.  It also works with a local back-end server that keeps track of user data.  Users have the ability to create a new account, sign in and out of an existing account, and favor/unfavor/view previously favored movies as they wish- so long as the backend server is running.  This app is also equipped with proper error messaging, notifying a user if their email is already in use when creating a new account & if their email & password don't match when signing-in.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+### Learning Goals & Requirements
 
-### `npm test`
+1.  Proper planning allowing for easier group collaboration.
+2.  Write squeaky clean, well refactored code using ES6 & ES7 syntax.
+3.  Create a clean UI while also displaying all necessary information.
+4.  Incorporate & show understanding of Redux.
+5.  Use a modular architecture for your application file structure.
+6.  Gain a better understanding of fetch calls, especially Posting new information to the server.
+7.  Understand and utilize React Router to effectively display data on different 'pages'.
+8.  Use propTypes for every component receiving props.
+9.  Utilization of conditional rendering.
+10.  Rigorous testing, including on asynchronous functionalities & redux mechanics.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+##  Installation
 
-### `npm run build`
+1.  clone this repo to your local machine
+2.  run npm install to download all necessay dependencies
+3.  run npm start to run the server
+4.  open localhost:3000 (unless your terminal says otherwise)
+5.  experiment with the different functionalities & look for a movie to see tonight!
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+###  Screenshots
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+ ![Movie-Tracker Demonstration](https://github.com/David5280/movie-tracker/blob/styling/src/images/Movie-Tracker-ScreenShot.gif)

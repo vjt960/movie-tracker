@@ -16,10 +16,10 @@ h1 {
 
 .header-btns-container {
   display: flex;
+  font-size: 0.8em;
   grid-column-end: 5;
   grid-column-start: 4;
   margin: auto;
-  font-size: 0.8em;
 }
 
 .sign-in-btn,
@@ -32,9 +32,12 @@ h1 {
   height: 40px;
   justify-content: center;
   margin: 7px;
+  padding: 5px;
   text-decoration: none;
   width: 75px;
-  padding: 5px;
+  &:hover {
+    border: 1px solid grey;
+  }
 }
 
 .header-greeting {
@@ -44,4 +47,8 @@ h1 {
   grid-column-end: 4;
   grid-column-start: 3;
   justify-content: center;
+}
+
+.active {
+  border: 1px solid grey;
 }

@@ -3,15 +3,22 @@ import FavoritePoster from '../FavoritePoster/FavoritePoster';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-export const Favorites = ({ favorites }) => {
-  const favesDisplay = favorites.map(movie => {
+export const Favorites = ({ favorites, isLoading }) => {
+  const faves = favorites.map(movie => {
     return <FavoritePoster movie={movie} key={movie.movie_id} />;
   });
-  return <section className="favorites">{favesDisplay}</section>;
+  const noFaves = (
+    <section className="no-faves-container">
+      <p className="no-favs-prompt">No favorites, yet!</p>
+    </section>
+  );
+  const favesDisplay = favorites.length ? faves : noFaves;
+  return <section className="favorites">{!isLoading && favesDisplay}</section>;
 };
 
 const mapStateToProps = state => ({
-  favorites: state.favorites
+  favorites: state.favorites,
+  isLoading: state.isLoading
 });
 
 Favorites.propTypes = {

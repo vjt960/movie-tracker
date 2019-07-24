@@ -1,31 +1,31 @@
 .fave-poster {
-  height: 90%;
-  width: 100%;
-  margin: 0;
+  height: 350px;
+  justify-self: center;
+  margin: 10px auto;
   padding: 0;
   position: relative;
+  width: 200px;
 }
 
 .poster-header {
-  height:50px;
-  width: 100%;
   background: transparent;
-  position: absolute;
   display: flex;
   flex-direction: row;
+  height:50px;
   justify-content: flex-end;
+  position: absolute;
+  width: 200px;
 }
 
 .fave-toggle {
-  height: 100%;
-  width: 40px;
-  background-image: url('../images/011-cinema.svg');
   background-color: transparent;
-  background-repeat: no-repeat;
+  background-image: url('../images/011-cinema.svg');
   background-position: 50% 50%;
+  background-repeat: no-repeat;
   border: none;
+  height: 100%;
   outline: none;
-
+  width: 40px;
   &:hover {
     cursor: pointer;
   } 
@@ -35,10 +35,10 @@
   display: none;
 }
 
+
 .fave-poster-img {
-  object-fit: cover;
-  height: 100%;
-  width: 100%;
+  background-size: cover;
+  width: 200px;
 }
 
 .poster-title {
