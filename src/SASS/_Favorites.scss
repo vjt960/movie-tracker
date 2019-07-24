@@ -1,15 +1,14 @@
 .favorites {
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  // grid-template-columns: repeat(4, 1fr); 
-  grid-gap: 25px;
-  overflow: hidden;
-  margin: 2%;
   color: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  grid-gap: 25px;
+  justify-content: flex-start;
+  margin: 2%;
+  overflow: hidden;
 }
 
 .no-faves-container {
-  margin: 100px auto;
   font-size: 30px;
+  margin: 100px auto;
 }
