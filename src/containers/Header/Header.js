@@ -3,7 +3,7 @@ import { NavLink, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signOut, clearFavorites, clearError } from '../../actions';
 
-const Header = props => {
+export const Header = props => {
   const signInOut = props.user.loggedIn ? 'Sign-out' : 'Sign-in';
   const greeting = props.user.loggedIn ? `Hello, ${props.user.name}!` : '';
 
@@ -36,11 +36,11 @@ const Header = props => {
   );
 };
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   user: state.user
 });
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   signOut: () => dispatch(signOut()),
   clearFavorites: () => dispatch(clearFavorites()),
   clearError: () => dispatch(clearError())
