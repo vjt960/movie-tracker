@@ -59,7 +59,7 @@ MoviesDisplay.propTypes = {
   error: PropTypes.string.isRequired,
   focusMovie: PropTypes.func.isRequired,
   cancelFocus: PropTypes.func.isRequired
-}
+};
 
 export default connect(
   mapStateToProps,
