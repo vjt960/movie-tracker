@@ -35,6 +35,9 @@ h1 {
   padding: 5px;
   text-decoration: none;
   width: 75px;
+  &:hover {
+    border: 1px solid grey;
+  }
 }
 
 .header-greeting {
