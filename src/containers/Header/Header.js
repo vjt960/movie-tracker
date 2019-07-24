@@ -26,6 +26,7 @@ const Header = ({ user, signOut, clearFavorites }) => {
           Home
         </NavLink>
         <NavLink 
+          exact
           to="/favorites" 
           className="favorites-btn" 
           activeClassName="active">
