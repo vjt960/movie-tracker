@@ -3,9 +3,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 # Movie-Tracker
 
 *Project Contributors:*
-Taylor Jordan (https://github.com/TaylorNoelJordan)
-Vinton Te'o (https://github.com/vjt960) 
-David Engel (https://github.com/David5280)
+* Taylor Jordan (https://github.com/TaylorNoelJordan)
+* Vinton Te'o (https://github.com/vjt960) 
+* David Engel (https://github.com/David5280)
 
 ## Summary
 
