@@ -34,4 +34,4 @@ Movie-Tracker is an application designed to show movies that are now playing in 
 
 ###  Screenshots
 
- ![Movie-Tracker Demonstration]()
+ ![Movie-Tracker Demonstration](https://github.com/David5280/movie-tracker/blob/styling/src/images/Movie-Tracker-ScreenShot.gif)
