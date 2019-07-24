@@ -6,7 +6,7 @@ import { fetchUser } from '../../utilz/apiCalls';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-class SignUpForm extends Component {
+export class SignUpForm extends Component {
   constructor() {
     super();
     this.state = {
@@ -92,12 +92,12 @@ class SignUpForm extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   user: state.user,
   error: state.error
 });
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   signIn: user => dispatch(signIn(user)),
   hasErrored: errorMessage => dispatch(hasErrored(errorMessage)),
   clearError: () => dispatch(clearError())

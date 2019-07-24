@@ -1,11 +1,11 @@
 import React from 'react';
-import MoviePoster from '../MoviePoster/MoviePoster';
+import FavoritePoster from '../FavoritePoster/FavoritePoster';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 const Favorites = ({ favorites }) => {
   const favesDisplay = favorites.map(movie => {
-    return <MoviePoster movie={movie} key={movie.movie_id} />;
+    return <FavoritePoster movie={movie} key={movie.movie_id} />;
   });
   return <section className="favorites">{favesDisplay}</section>;
 };
@@ -15,7 +15,7 @@ const mapStateToProps = state => ({
 });
 
 Favorites.propTypes = {
-  favorites:  PropTypes.array.isRequired
-}
+  favorites: PropTypes.array.isRequired
+};
 
 export default connect(mapStateToProps)(Favorites);
